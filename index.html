@@ -1,117 +1,1695 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en" class="dark">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FRAME — Your next great story</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;600;700;800&display=swap');
-:root{--bg:#0b0b0e;--panel:#141418;--text:#f5f5f7;--muted:#96969f;--line:#ffffff12;--hover:#202026;--accent:#e5293e}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;transition:background .3s,color .3s}body.light{--bg:#f8fafc;--panel:#fff;--text:#17171d;--muted:#6b7280;--line:#00000012;--hover:#eef0f4}button,a,input,select{font:inherit}button,a{ -webkit-tap-highlight-color:transparent}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #e5293e;outline-offset:4px}button{border:0;color:inherit}h1,h2,h3,.brand{font-family:Manrope,sans-serif}svg{width:19px;height:19px;flex-shrink:0}.muted{color:var(--muted)}.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px}.sidebar{width:210px;position:fixed;inset:0 auto 0 0;border-right:1px solid var(--line);padding:30px 20px;z-index:30;background:var(--bg);display:flex;flex-direction:column}.brand{font-size:27px;font-weight:800;letter-spacing:3px;display:flex;align-items:center;gap:9px}.brand span{color:var(--accent)}.nav{display:flex;gap:12px;align-items:center;background:transparent;width:100%;padding:12px 15px;margin:5px 0;border-radius:9px;color:var(--muted);text-align:left;font-size:13px}.nav:hover{background:var(--hover);color:var(--text)}.nav.active{background:#e5293e18;color:#f34255}.workspace{margin-left:210px}.topbar{height:88px;padding:0 34px;display:flex;align-items:center;gap:24px;border-bottom:1px solid var(--line)}.search{display:flex;gap:10px;align-items:center;max-width:420px;flex:1;color:var(--muted)}.search input{background:transparent;border:0;outline:none;width:100%;color:var(--text);font-size:13px}.icon-btn{background:var(--hover);padding:10px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center}.content-layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:30px;padding:28px 34px}.hero{position:relative;overflow:hidden;min-height:400px;border-radius:18px;background:#13151b;color:white;display:flex;align-items:center}.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}.hero:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.95),rgba(0,0,0,.55) 48%,rgba(0,0,0,.04)),linear-gradient(0deg,#08090bb0,transparent)}.hero-copy{position:relative;z-index:1;padding:38px;max-width:480px}.eyebrow{font-size:10px;letter-spacing:3px;font-weight:700;text-transform:uppercase;color:#e9a8ad}.hero h1{font-size:clamp(34px,4vw,56px);line-height:1.08;margin:18px 0;letter-spacing:-2px;font-weight:800}.meta{display:flex;gap:12px;align-items:center;font-size:11px;color:#d4d4d8}.btn{display:inline-flex;align-items:center;gap:9px;justify-content:center;padding:12px 18px;border-radius:8px;background:var(--hover);font-size:12px;font-weight:700}.primary{background:var(--accent);color:#fff;box-shadow:0 8px 25px #e5293e25}.ghost{background:#ffffff16;border:1px solid #ffffff40;color:white}.section-head{display:flex;justify-content:space-between;align-items:center;margin:29px 0 16px;gap:12px}.section-head h2{font-size:18px;font-weight:700;letter-spacing:-.5px}.text-btn{background:transparent;color:var(--muted);font-size:11px;display:flex;gap:6px;align-items:center}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:17px}.poster{position:relative;aspect-ratio:2/3;overflow:hidden;border-radius:10px;background:var(--hover);display:block;width:100%;padding:0;text-align:left}.poster img{width:100%;height:100%;object-fit:cover;transition:transform .4s}.poster:hover img{transform:scale(1.06)}.poster:after{content:'';position:absolute;inset:40% 0 0;background:linear-gradient(transparent,#000b)}.play-overlay{position:absolute;z-index:2;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:.2s}.poster:hover .play-overlay,.poster:focus-visible .play-overlay{opacity:1}.play-overlay span{background:#e5293ee8;padding:15px;border-radius:50%}.rating{position:absolute;top:10px;left:10px;background:#111b;color:white;border-radius:5px;font-size:10px;padding:4px 6px;z-index:2}.card-title{display:flex;align-items:center;justify-content:space-between;gap:4px;margin-top:10px}.card-title h3{font-size:12px;font-weight:600}.add{padding:5px;background:transparent;color:var(--muted);border-radius:5px}.add.saved{color:#ed4354}.caption{font-size:10px;color:var(--muted);margin-top:3px}.ad{border:1px dashed var(--line);background:var(--panel);border-radius:10px;text-align:center;overflow:auto;display:flex;align-items:center;justify-content:center;flex-direction:column;color:var(--muted);font-size:10px;gap:8px}.ad-horizontal{min-height:106px;margin:26px 0;width:100%}.ad-square{width:100%;min-height:250px;margin:28px 0}.side-item{display:flex;gap:12px;margin:17px 0;align-items:center}.side-poster{width:53px;height:73px;border-radius:7px;object-fit:cover}.side-item h3{font-size:12px;margin-bottom:6px}.side-item button{background:transparent;padding:0;text-align:left}.tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}.chip{border:1px solid var(--line);padding:8px 14px;border-radius:20px;background:var(--panel);font-size:11px;color:var(--muted)}.chip.selected{background:var(--accent);color:white;border-color:var(--accent)}.empty{padding:50px 20px;text-align:center;border:1px dashed var(--line);border-radius:14px;color:var(--muted)}.empty h2{color:var(--text);margin-bottom:10px}.modal{position:fixed;inset:0;background:#000c;backdrop-filter:blur(10px);z-index:80;display:flex;align-items:center;justify-content:center;padding:20px}.modal[hidden]{display:none}.dialog{width:min(900px,100%);background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 30px 100px #0009;max-height:92vh;overflow-y:auto}.dialog video{width:100%;max-height:62vh;background:#000;display:block}.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);background:var(--text);color:var(--bg);padding:13px 22px;border-radius:10px;z-index:100;font-size:13px;box-shadow:0 12px 40px #0004;animation:toastin .25s ease}.notice{position:absolute;right:30px;top:74px;width:290px;padding:20px;z-index:50;box-shadow:0 15px 50px #0005}.notice[hidden]{display:none}footer{font-size:10px;color:var(--muted);padding:15px 34px 30px}.mobile-menu{display:none}.row-panel{padding:22px;margin-bottom:15px}.row-panel h3{font-weight:700;margin-bottom:8px}.setting-row{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 0;border-bottom:1px solid var(--line)}select{background:var(--hover);color:var(--text);border:1px solid var(--line);border-radius:7px;padding:8px}.backdrop{display:none}@keyframes toastin{from{opacity:0;bottom:15px}to{opacity:1;bottom:26px}}@media(min-width:1500px){.content-layout{grid-template-columns:minmax(0,1fr) 320px}.hero{min-height:460px}}@media(max-width:1200px){.content-layout{grid-template-columns:minmax(0,1fr)}.rightbar{display:grid;grid-template-columns:1fr 1fr;gap:25px}.rightbar .ad-square{grid-row:span 2;margin:0}.sidebar{width:185px}.workspace{margin-left:185px}}@media(max-width:700px){.sidebar{transform:translateX(-100%);transition:transform .25s;width:220px}.sidebar.open{transform:translateX(0)}.workspace{margin-left:0}.topbar{height:74px;padding:0 18px;gap:12px}.mobile-menu{display:inline-flex}.theme-label,.profile-label{display:none}.content-layout{padding:20px 18px;gap:20px}.hero{min-height:385px}.hero-copy{padding:25px}.hero h1{font-size:40px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 13px}.rightbar{display:block}.rightbar .ad-square{max-width:320px;margin:26px auto}.backdrop.visible{display:block;position:fixed;inset:0;background:#0009;z-index:29}footer{padding:20px 18px}.notice{right:16px}.hero-copy p{font-size:12px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netflix - Watch TV Shows Online, Watch Movies Online</title>
+  <meta name="description" content="Stream your favorite movies, TV shows, and animes in Ultra HD. Featuring Money Heist, Extraction 2, Squid Game, The Witcher and more.">
+  <meta property="og:title" content="Netflix Streaming App">
+  <meta property="og:description" content="Stream your favorite movies, TV shows, and animes in Ultra HD.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              red: '#e50914',
+              hover: '#b81d24',
+              dark: '#0b0b0e',
+              sidebar: '#0d0e12',
+              card: '#14151a',
+              input: '#18191f',
+              border: '#23242c'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    /* Smooth custom scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #27272a;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3f3f46;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  </style>
 </head>
-<body>
-<div id="navBackdrop" class="backdrop"></div>
-<aside id="sidebar" class="sidebar" aria-label="Main navigation">
-<a href="#home" class="brand" aria-label="Frame Home"><span>◧</span> FRAME<span style="font-size:12px;letter-spacing:0">®</span></a>
-<p class="muted" style="font-size:9px;letter-spacing:2px;margin:40px 15px 12px">MENU</p><nav id="mainNav"></nav>
-<div style="margin-top:auto;padding-top:28px"><div class="panel" style="padding:16px"><p style="font-size:12px;font-weight:700">A world of stories.</p><p class="muted" style="font-size:10px;line-height:1.7;margin-top:7px">Find your next favorite. Make tonight a movie night.</p><button class="text-btn" style="color:#ed4354;margin-top:12px" data-page="Discovery">Explore movies <i data-lucide="arrow-up-right"></i></button></div><button class="nav" data-page="Setting"><i data-lucide="settings-2"></i> Setting</button></div>
-</aside>
-<div class="workspace">
-<header class="topbar"><button class="icon-btn mobile-menu" id="menuToggle" aria-label="Open navigation" aria-expanded="false"><i data-lucide="menu"></i></button><label class="search"><i data-lucide="search"></i><input id="search" type="search" placeholder="Search movies, series, and more…" aria-label="Search movies"></label><div style="margin-left:auto;display:flex;gap:15px;align-items:center"><button id="themeToggle" class="text-btn" aria-label="Toggle color theme"><i data-lucide="moon"></i><span class="theme-label">Night</span></button><button id="notifications" class="icon-btn" aria-label="Notifications" aria-expanded="false" style="position:relative"><i data-lucide="bell"></i><span style="position:absolute;right:9px;top:7px;width:5px;height:5px;background:#ed4354;border-radius:50%"></span></button><button data-page="Setting" class="text-btn" aria-label="Open profile settings"><span style="background:#d6bca8;color:#3e3027;border-radius:50%;width:33px;height:33px;display:grid;place-items:center;font-weight:700">JD</span><span class="profile-label">Jamie D.</span></button></div></header>
-<div id="notificationPanel" class="notice panel" hidden><h3 style="font-weight:700;margin-bottom:12px">You're all caught up</h3><p class="muted" style="font-size:12px;line-height:1.7">New stories have arrived. Explore New Release to find your next watch.</p><button class="btn primary" style="margin-top:15px" data-page="Home">Explore releases</button></div>
-<div class="content-layout"><main id="mainContent" tabindex="-1"></main><aside class="rightbar" id="rightbar" aria-label="Movie recommendations"></aside></div>
-<footer>© <span id="year"></span> FRAME. Demo streaming interface · Sample videos only.</footer>
-</div>
-<div id="playerModal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="playerTitle"><div class="dialog"><div style="display:flex;align-items:center;justify-content:space-between;padding:17px 22px;gap:12px"><div><p class="eyebrow" style="color:#e5293e">NOW PLAYING · DEMO TRAILER</p><h2 id="playerTitle" style="font-size:20px;font-weight:700;margin-top:5px"></h2></div><button id="closePlayer" class="icon-btn" aria-label="Close player"><i data-lucide="x"></i></button></div><video id="videoPlayer" controls playsinline preload="none"></video><p id="videoError" hidden style="padding:18px;color:#f87171">Video gagal dimuat. Periksa koneksi atau ganti URL video pada data film.</p><div style="padding:18px 22px;display:flex;gap:12px;align-items:center;flex-wrap:wrap"><p class="muted" style="font-size:12px;flex:1">Cuplikan demo terbuka. Ganti videoUrl untuk menayangkan konten Anda.</p><a id="sponsorLink" target="_blank" rel="noopener noreferrer sponsored" class="btn primary">Visit sponsor <i data-lucide="external-link"></i></a></div></div></div>
-<div id="toasts" role="status" aria-live="polite"></div>
-<script>
-'use strict';
-// MONETIZATION CONFIG — replace these three values with your own ad settings.
-const DIRECT_LINK = 'https://www.profitableratecpmnetwork.com/i13a89dx?key=262a9227cbb21b2b920240c18d5e854e';
-const BANNER_KOTAK = '<script>
-  atOptions = {
-    'key' : 'cde44d3d832ad12cc12daf7eb9c5c9fa',
-    'format' : 'iframe',
-    'height' : 250,
-    'width' : 300,
-    'params' : {}
-  };
-</script>
-<script src="https://www.highrevenueformat.com/cde44d3d832ad12cc12daf7eb9c5c9fa/invoke.js"></script>';
-const BANNER_HORIZONTAL = '<script>
-  atOptions = {
-    'key' : '393557292e827ec3c82c6c10f6eaebd5',
-    'format' : 'iframe',
-    'height' : 90,
-    'width' : 728,
-    'params' : {}
-  };
-</script>
-<script src="https://www.highrevenueformat.com/393557292e827ec3c82c6c10f6eaebd5/invoke.js"></script>';
-// player: open the video modal. direct: open DIRECT_LINK in a new tab.
-// Both modes apply consistently to every poster and every Watch / Play button.
-const PLAY_ACTION = 'player';
-const DEMO_VIDEO = 'https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
-const movies = [
-{id:1,title:'Interstellar',year:'2014',genre:'Sci-Fi',rating:'8.7',image:'https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg',backdrop:'https://image.tmdb.org/t/p/original/xJHokMbljvjADYdit5fK5VQsXEG.jpg',description:'A journey beyond the stars. A team of explorers travels through a wormhole to discover a new home for humanity.',videoUrl:DEMO_VIDEO},
-{id:2,title:'Dune: Part Two',year:'2024',genre:'Sci-Fi',rating:'8.5',image:'https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg',videoUrl:DEMO_VIDEO},
-{id:3,title:'The Batman',year:'2022',genre:'Action',rating:'7.8',image:'https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg',videoUrl:DEMO_VIDEO},
-{id:4,title:'Oppenheimer',year:'2023',genre:'Drama',rating:'8.3',image:'https://image.tmdb.org/t/p/w500/ptpr0kGAckfQkJeJIt8st5dglvd.jpg',videoUrl:DEMO_VIDEO},
-{id:5,title:'Spider-Man: Across the Spider-Verse',year:'2023',genre:'Animation',rating:'8.6',image:'https://image.tmdb.org/t/p/w500/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg',videoUrl:DEMO_VIDEO},
-{id:6,title:'Inception',year:'2010',genre:'Sci-Fi',rating:'8.8',image:'https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg',videoUrl:DEMO_VIDEO},
-{id:7,title:'The Wild Robot',year:'2024',genre:'Animation',rating:'8.2',image:'https://image.tmdb.org/t/p/w500/wTnV3PCVW5O92JMrFvvrRcV39RU.jpg',videoUrl:DEMO_VIDEO},
-{id:8,title:'Top Gun: Maverick',year:'2022',genre:'Action',rating:'8.2',image:'https://image.tmdb.org/t/p/w500/62HCnUTziyWcpDaBO2i1DX17ljH.jpg',videoUrl:DEMO_VIDEO},
-{id:9,title:'Beyond the Horizon',year:'Coming 2027',genre:'Sci-Fi',rating:'NEW',upcoming:true,image:'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=500&auto=format&fit=crop',videoUrl:DEMO_VIDEO},
-{id:10,title:'The Last Wilderness',year:'Coming 2027',genre:'Adventure',rating:'NEW',upcoming:true,image:'https://images.unsplash.com/photo-1472396961693-142e6e269027?w=500&auto=format&fit=crop',videoUrl:DEMO_VIDEO}
-];
-const menu=[['Home','house'],['Watch List','bookmark'],['Coming Soon','calendar-days'],['Discovery','compass'],['Friends','users'],['Parties','clapperboard'],['Media','video']];
-const $=s=>document.querySelector(s);
-function readStorage(key,fallback){try{return JSON.parse(localStorage.getItem(key))??fallback}catch{return fallback}}
-const state={page:'Home',query:'',genre:'All',expanded:false,saved:new Set(readStorage('frame-list',[1,6])),theme:readStorage('frame-theme','dark'),history:readStorage('frame-history',[]),invited:new Set(),reminders:new Set(readStorage('frame-reminders',[]))};
-function persist(key,value){try{localStorage.setItem(key,JSON.stringify(value))}catch{toast('Penyimpanan browser tidak tersedia; perubahan berlaku selama sesi ini.')}}
-function icons(){if(window.lucide)lucide.createIcons()}
-function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function toast(message){$('#toasts').innerHTML='<div class="toast">'+esc(message)+'</div>';clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('#toasts').innerHTML='',3300)}
-function save(id){state.saved.has(id)?state.saved.delete(id):state.saved.add(id);persist('frame-list',[...state.saved]);render();toast(state.saved.has(id)?'Added to your watch list':'Removed from your watch list')}
-function card(m){return `<article><button class="poster" data-play="${m.id}" aria-label="Play ${esc(m.title)}"><img src="${m.image}" alt="${esc(m.title)} poster" loading="lazy"><span class="rating">★ ${m.rating}</span><span class="play-overlay"><span><i data-lucide="play"></i></span></span></button><div class="card-title"><h3>${esc(m.title)}</h3><button class="add ${state.saved.has(m.id)?'saved':''}" data-save="${m.id}" aria-label="${state.saved.has(m.id)?'Remove from':'Add to'} watch list: ${esc(m.title)}" aria-pressed="${state.saved.has(m.id)}"><i data-lucide="${state.saved.has(m.id)?'bookmark-check':'plus'}"></i></button></div><p class="caption">${m.year} <span style="padding:0 5px">•</span> ${m.genre}</p>${m.upcoming?`<button class="text-btn" style="margin-top:10px;color:#ed4354" data-remind="${m.id}">${state.reminders.has(m.id)?'✓ Reminder set':'Remind me'}</button>`:''}</article>`}
-function grid(list){return list.length?'<div class="grid">'+list.map(card).join('')+'</div>':'<div class="empty"><h2>No titles found</h2><p>Try another title or explore a different category.</p></div>'}
-function heading(title,action=''){return `<div class="section-head"><h2>${esc(title)}</h2>${action}</div>`}
-function ad(kind){return `<div class="ad ad-${kind}" data-ad="${kind}" aria-label="Advertisement"><span style="letter-spacing:2px;font-size:8px">ADVERTISEMENT</span><span>${kind==='square'?'300 × 250':'728 × 90'} · Your ad goes here</span></div>`}
-// iframe srcdoc allows pasted ad scripts to execute; scripts inserted via innerHTML would not execute.
-function mountAds(){document.querySelectorAll('[data-ad]').forEach(slot=>{const raw=slot.dataset.ad==='square'?BANNER_KOTAK:BANNER_HORIZONTAL;if(!raw.replace(/<!--[\s\S]*?-->/g,'').trim())return;const frame=document.createElement('iframe');frame.title='Advertisement';frame.width=slot.dataset.ad==='square'?'300':'728';frame.height=slot.dataset.ad==='square'?'250':'90';frame.style.border='0';frame.setAttribute('sandbox','allow-scripts allow-popups allow-popups-to-escape-sandbox');frame.srcdoc='<!DOCTYPE html><html><head><meta name="referrer" content="no-referrer"></head><body style="margin:0">'+raw+'</body></html>';slot.replaceChildren(frame)})}
-function sideList(list){return list.map(m=>`<article class="side-item"><button data-play="${m.id}" aria-label="Play ${esc(m.title)}"><img class="side-poster" src="${m.image}" alt="${esc(m.title)}" loading="lazy"></button><div><button data-play="${m.id}"><h3>${esc(m.title)}</h3></button><p class="caption">${m.genre} · ${m.year}</p><p style="font-size:10px;margin-top:8px;color:#edb75e">★ ${m.rating} <span class="muted">IMDb</span></p></div></article>`).join('')}
-function render(){
-$('#mainNav').innerHTML=menu.map(([label,icon])=>`<button class="nav ${state.page===label?'active':''}" data-page="${label}" ${state.page===label?'aria-current="page"':''}><i data-lucide="${icon}"></i>${label}${label==='Watch List'?`<span style="margin-left:auto;font-size:10px">${state.saved.size}</span>`:''}</button>`).join('');
-$('#rightbar').innerHTML='<section>'+heading('Popular Movies')+sideList([movies[3],movies[1],movies[2]])+'</section>'+ad('square')+'<section>'+heading('Favorites',`<button class="text-btn" data-page="Watch List">See all <i data-lucide="chevron-right"></i></button>`)+sideList(movies.filter(m=>state.saved.has(m.id)).slice(0,3))+(state.saved.size?'':'<p class="muted" style="font-size:12px">Tap + on a movie to save it.</p>')+'</section>';
-const main=$('#mainContent');let list=movies.filter(m=>m.title.toLowerCase().includes(state.query.toLowerCase()));
-if(state.query){main.innerHTML=heading('Search results')+`<p class="muted" style="font-size:12px;margin-bottom:22px">${list.length} titles found for “${esc(state.query)}”</p>`+grid(list)}
-else if(state.page==='Home'){const m=movies[0];main.innerHTML=`<section class="hero"><img src="${m.backdrop}" alt="Interstellar — a journey beyond the stars"><div class="hero-copy"><p class="eyebrow">FRAME SELECT · FEATURED TONIGHT</p><h1>Some stories<br>take you further.</h1><div class="meta"><span style="color:#f6c76b">★ ${m.rating}</span><span>${m.year}</span><span>2h 49m</span><span style="border:1px solid #ffffff55;padding:2px 5px;border-radius:3px">13+</span></div><p style="font-size:13px;color:#c4c4cb;line-height:1.8;margin:18px 0 23px">${m.description}</p><div style="display:flex;gap:10px"><button class="btn primary" data-play="1"><i data-lucide="play"></i> Watch now</button><button class="btn ghost" data-save="1"><i data-lucide="${state.saved.has(1)?'check':'plus'}"></i> My list</button></div></div></section>`+heading('New Release',`<button class="text-btn" id="viewMore">${state.expanded?'Show less':'View more'} <i data-lucide="arrow-right"></i></button>`)+grid(movies.filter(m=>!m.upcoming).slice(0,state.expanded?8:4))+ad('horizontal')+heading('Made for your movie night')+grid([movies[5],movies[6],movies[7],movies[4]])}
-else if(state.page==='Watch List'){main.innerHTML=heading('Your Watch List')+'<p class="muted" style="font-size:12px;margin-bottom:22px">Your next great watch, saved in one place.</p>'+grid(movies.filter(m=>state.saved.has(m.id)))}
-else if(state.page==='Coming Soon'){main.innerHTML=heading('Coming Soon')+'<p class="muted" style="font-size:12px;margin-bottom:22px">Concept previews · Set reminders for upcoming stories.</p>'+grid(movies.filter(m=>m.upcoming))}
-else if(state.page==='Discovery'){main.innerHTML=heading('Discover something great')+'<div class="tags">'+['All','Action','Sci-Fi','Drama','Animation','Adventure'].map(g=>`<button class="chip ${g===state.genre?'selected':''}" data-genre="${g}">${g}</button>`).join('')+'</div>'+grid(movies.filter(m=>state.genre==='All'||m.genre===state.genre))}
-else if(state.page==='Friends'){main.innerHTML=heading('Your movie circle')+'<p class="muted" style="font-size:12px;margin-bottom:24px">Demo friends · Invite someone to a local watch party.</p>'+[['AL','Alex Lee','Watching Dune: Part Two'],['SK','Sarah Kim','Added The Wild Robot'],['MR','Morgan Reed','Recommends Interstellar']].map(([initial,name,activity])=>`<div class="panel row-panel" style="display:flex;align-items:center;gap:16px"><span class="icon-btn" style="width:45px;height:45px;color:#ed4354">${initial}</span><div style="flex:1"><h3>${name}</h3><p class="muted" style="font-size:12px">${activity}</p></div><button class="btn" data-invite="${name}">${state.invited.has(name)?'Invited ✓':'Invite'}</button></div>`).join('')}
-else if(state.page==='Parties'){main.innerHTML=heading('Movie nights, together')+'<div class="panel row-panel"><h3>Start a watch party</h3><p class="muted" style="font-size:13px;line-height:1.8;margin:12px 0 20px">Create a local demo room and choose a movie. Synchronized multiplayer requires a server.</p><button class="btn primary" id="createParty"><i data-lucide="plus"></i> Create demo room</button><div id="partyRoom"></div></div>'}
-else if(state.page==='Media'){main.innerHTML=heading('Recently Played')+'<p class="muted" style="font-size:12px;margin-bottom:22px">Movies you opened on this browser.</p>'+grid(state.history.map(id=>movies.find(m=>m.id===id)).filter(Boolean))}
-else{main.innerHTML=heading('Settings')+`<div class="panel" style="padding:5px 25px"><div class="setting-row"><div><h3>Appearance</h3><p class="caption">Choose your preferred color theme</p></div><button class="btn" id="settingTheme">${state.theme==='dark'?'Dark':'Light'} mode</button></div><div class="setting-row"><div><h3>Playback quality</h3><p class="caption">Demo preference; source video quality is unchanged</p></div><select id="quality" aria-label="Playback quality"><option>Auto</option><option>1080p</option><option>720p</option></select></div><div class="setting-row"><div><h3>Watch history</h3><p class="caption">Stored only in this browser</p></div><button class="btn" id="clearHistory">Clear history</button></div><div class="setting-row"><div><h3>Profile</h3><p class="caption">Jamie D. · Demo account</p></div><span class="chip">Personal</span></div></div>`;$('#quality').value=readStorage('frame-quality','Auto')}
-icons();mountAds();document.querySelectorAll('img').forEach(img=>img.onerror=()=>{img.onerror=null;img.src='data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="400" height="600"><defs><linearGradient id="a" x2="1" y2="1"><stop stop-color="#44212c"/><stop offset="1" stop-color="#141b2c"/></linearGradient></defs><rect width="100%" height="100%" fill="url(#a)"/><text x="50%" y="50%" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="24">FRAME SELECT</text></svg>')});
-}
-function navigate(page){state.page=page;state.query='';$('#search').value='';$('#notificationPanel').hidden=true;$('#notifications').setAttribute('aria-expanded','false');closeNav();render();window.scrollTo({top:0,behavior:'smooth'})}
-function theme(){state.theme=state.theme==='dark'?'light':'dark';applyTheme();persist('frame-theme',state.theme);render()}
-function applyTheme(){document.body.classList.toggle('light',state.theme==='light');$('#themeToggle').innerHTML=`<i data-lucide="${state.theme==='dark'?'moon':'sun'}"></i><span class="theme-label">${state.theme==='dark'?'Night':'Light'}</span>`;icons()}
-let previousFocus;
-function play(id){const m=movies.find(m=>m.id===id);if(!m)return;if(PLAY_ACTION==='direct'){window.open(DIRECT_LINK,'_blank','noopener,noreferrer');return}previousFocus=document.activeElement;$('#playerTitle').textContent=m.title;$('#videoError').hidden=true;$('#videoPlayer').src=m.videoUrl;$('#sponsorLink').href=DIRECT_LINK;$('#playerModal').hidden=false;document.body.style.overflow='hidden';$('#closePlayer').focus();state.history=[id,...state.history.filter(x=>x!==id)].slice(0,20);persist('frame-history',state.history);$('#videoPlayer').play().catch(()=>{});}
-function closePlayer(){$('#videoPlayer').pause();$('#videoPlayer').removeAttribute('src');$('#videoPlayer').load();$('#playerModal').hidden=true;document.body.style.overflow='';if(state.page==='Media')render();if(previousFocus?.isConnected)previousFocus.focus();else $('#mainContent').focus()}
-function closeNav(){$('#sidebar').classList.remove('open');$('#navBackdrop').classList.remove('visible');$('#menuToggle').setAttribute('aria-expanded','false')}
-document.addEventListener('click',e=>{const b=e.target.closest('button,a');if(!b)return;if(b.dataset.page){navigate(b.dataset.page);return}if(b.matches('.brand')){e.preventDefault();navigate('Home');return}if(b.dataset.play){play(Number(b.dataset.play));return}if(b.dataset.save){save(Number(b.dataset.save));return}if(b.dataset.genre){state.genre=b.dataset.genre;render();return}if(b.dataset.invite){state.invited.add(b.dataset.invite);render();toast('Demo invitation prepared for '+b.dataset.invite);return}if(b.dataset.remind){let id=Number(b.dataset.remind);state.reminders.has(id)?state.reminders.delete(id):state.reminders.add(id);persist('frame-reminders',[...state.reminders]);render();toast(state.reminders.has(id)?'Reminder saved on this browser':'Reminder removed');return}if(b.id==='themeToggle'||b.id==='settingTheme')theme();if(b.id==='viewMore'){state.expanded=!state.expanded;render();toast(state.expanded?'More titles loaded':'Showing latest releases')}if(b.id==='clearHistory'){state.history=[];persist('frame-history',[]);toast('Watch history cleared')}if(b.id==='createParty'){$('#partyRoom').innerHTML='<div style="margin-top:20px;border-top:1px solid var(--line);padding-top:20px"><p class="eyebrow" style="color:#ed4354">DEMO ROOM IS READY</p><h3 style="margin-top:12px">Jamie’s movie night</h3><p class="muted" style="font-size:12px;margin:10px 0">Choose a title to start your local screening.</p>'+grid(movies.slice(0,2))+'</div>';icons();toast('Demo room created')} });
-$('#search').addEventListener('input',e=>{state.query=e.target.value.trim();render()});
-$('#notifications').onclick=()=>{const p=$('#notificationPanel');p.hidden=!p.hidden;$('#notifications').setAttribute('aria-expanded',String(!p.hidden))};
-$('#menuToggle').onclick=()=>{const open=$('#sidebar').classList.toggle('open');$('#navBackdrop').classList.toggle('visible',open);$('#menuToggle').setAttribute('aria-expanded',String(open))};
-$('#navBackdrop').onclick=closeNav;$('#closePlayer').onclick=closePlayer;$('#playerModal').onclick=e=>{if(e.target===$('#playerModal'))closePlayer()};$('#videoPlayer').onerror=()=>$('#videoError').hidden=false;
-document.addEventListener('change',e=>{if(e.target.id==='quality'){persist('frame-quality',e.target.value);toast('Quality preference saved: '+e.target.value)}});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(!$('#playerModal').hidden)closePlayer();closeNav();$('#notificationPanel').hidden=true;$('#notifications').setAttribute('aria-expanded','false')}if(e.key==='Tab'&&!$('#playerModal').hidden){const items=[...$('#playerModal').querySelectorAll('button,video,a[href]')];const first=items[0],last=items[items.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
-$('#year').textContent=new Date().getFullYear();applyTheme();render();
-</script>
+
+<body class="bg-[#0b0b0e] text-neutral-100 selection:bg-red-600 selection:text-white transition-colors duration-300 min-h-screen overflow-x-hidden" id="app-body">
+
+  <div class="flex w-full min-h-screen relative">
+    
+    <!-- MOBILE BACKDROP -->
+    <div id="mobile-backdrop" class="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm hidden lg:hidden transition-opacity" onclick="toggleMobileSidebar()"></div>
+
+    <!-- LEFT SIDEBAR NAVIGATION -->
+    <aside id="sidebar" class="fixed lg:static top-0 bottom-0 left-0 z-40 w-60 sm:w-64 flex flex-col justify-between py-6 px-4 bg-[#0d0e12] border-r border-[#23242c] -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out select-none">
+      <div class="space-y-7">
+        <!-- Logo -->
+        <div class="flex items-center justify-between px-2">
+          <div onclick="switchView('home')" class="flex items-center gap-2.5 cursor-pointer group">
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center shadow-lg shadow-red-600/30 group-hover:scale-105 transition-transform">
+              <span class="text-white font-black text-xl tracking-tighter leading-none">N</span>
+            </div>
+            <span class="text-xl font-bold tracking-tight text-white flex items-center">
+              Netflix
+            </span>
+          </div>
+          <!-- Close on Mobile -->
+          <button onclick="toggleMobileSidebar()" class="p-1 rounded-lg text-neutral-400 hover:text-white lg:hidden cursor-pointer" aria-label="Close sidebar">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <!-- Menu Navigation -->
+        <div class="space-y-6">
+          <!-- MENU GROUP -->
+          <div class="space-y-1.5">
+            <div class="px-3.5 text-[11px] font-bold uppercase tracking-wider text-neutral-500">Menu</div>
+            <div class="space-y-1">
+              <button id="nav-home" onclick="switchView('home')" class="nav-item w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold bg-red-600/15 text-red-500 transition-all cursor-pointer">
+                <div class="flex items-center gap-3.5">
+                  <i data-lucide="home" class="w-[18px] h-[18px]"></i>
+                  <span>Home</span>
+                </div>
+              </button>
+
+              <button id="nav-watchlist" onclick="switchView('watchlist')" class="nav-item w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium text-neutral-400 hover:text-neutral-200 hover:bg-neutral-800/40 transition-all cursor-pointer">
+                <div class="flex items-center gap-3.5">
+                  <i data-lucide="heart" class="w-[18px] h-[18px]"></i>
+                  <span>Watch List</span>
+                </div>
+                <span id="watchlist-badge" class="text-[11px] px-2 py-0.5 rounded-full font-bold bg-neutral-800 text-neutral-300">2</span>
+              </button>
+
+              <button id="nav-coming_soon" onclick="switchView('coming_soon')" class="nav-item w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium text-neutral-400 hover:text-neutral-200 hover:bg-neutral-800/40 transition-all cursor-pointer">
+                <div class="flex items-center gap-3.5">
+                  <i data-lucide="calendar" class="w-[18px] h-[18px]"></i>
+                  <span>Coming Soon</span>
+                </div>
+                <span class="text-[10px] px-1.5 py-0.5 rounded bg-red-600/20 text-red-400 font-bold border border-red-500/30">New</span>
+              </button>
+
+              <button id="nav-discovery" onclick="switchView('discovery')" class="nav-item w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium text-neutral-400 hover:text-neutral-200 hover:bg-neutral-800/40 transition-all cursor-pointer">
+                <div class="flex items-center gap-3.5">
+                  <i data-lucide="compass" class="w-[18px] h-[18px]"></i>
+                  <span>Discovery</span>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- SOCIAL GROUP -->
+          <div class="space-y-1.5">
+            <div class="px-3.5 text-[11px] font-bold uppercase tracking-wider text-neutral-500">Social</div>
+            <div class="space-y-1">
+              <button id="nav-friends" onclick="switchView('friends')" class="nav-item w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium text-neutral-400 hover:text-neutral-200 hover:bg-neutral-800/40 transition-all cursor-pointer">
+                <div class="flex items-center gap-3.5">
+                  <i data-lucide="users" class="w-[18px] h-[18px]"></i>
+                  <span>Friends</span>
+                </div>
+                <span class="text-[11px] px-2 py-0.5 rounded-full font-bold bg-neutral-800 text-neutral-300">3</span>
+              </button>
+
+              <button id="nav-parties" onclick="switchView('parties')" class="nav-item w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium text-neutral-400 hover:text-neutral-200 hover:bg-neutral-800/40 transition-all cursor-pointer">
+                <div class="flex items-center gap-3.5">
+                  <i data-lucide="sparkles" class="w-[18px] h-[18px]"></i>
+                  <span>Parties</span>
+                </div>
+                <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold">Live</span>
+              </button>
+
+              <button id="nav-media" onclick="switchView('media')" class="nav-item w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium text-neutral-400 hover:text-neutral-200 hover:bg-neutral-800/40 transition-all cursor-pointer">
+                <div class="flex items-center gap-3.5">
+                  <i data-lucide="film" class="w-[18px] h-[18px]"></i>
+                  <span>Media</span>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- GENERAL GROUP -->
+          <div class="space-y-1.5">
+            <div class="px-3.5 text-[11px] font-bold uppercase tracking-wider text-neutral-500">General</div>
+            <div class="space-y-1">
+              <button id="nav-setting" onclick="switchView('setting')" class="nav-item w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium text-neutral-400 hover:text-neutral-200 hover:bg-neutral-800/40 transition-all cursor-pointer">
+                <div class="flex items-center gap-3.5">
+                  <i data-lucide="settings" class="w-[18px] h-[18px]"></i>
+                  <span>Setting</span>
+                </div>
+              </button>
+
+              <button onclick="showToast('Session Active', 'You are logged in with 4K HDR Family VIP Plan', 'info')" class="w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl text-sm font-medium text-neutral-400 hover:text-red-400 hover:bg-red-950/20 transition-all cursor-pointer">
+                <i data-lucide="log-out" class="w-[18px] h-[18px]"></i>
+                <span>Log Out</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Plan Status -->
+      <div class="px-2 pt-4 border-t border-[#23242c]">
+        <div class="p-3 rounded-xl bg-gradient-to-r from-red-950/40 to-neutral-900 border border-red-900/30 flex items-center justify-between">
+          <div class="space-y-0.5">
+            <div class="text-[11px] uppercase font-bold text-red-400 tracking-wider">Premium Ultra</div>
+            <div class="text-xs text-neutral-400">4K HDR Active</div>
+          </div>
+          <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN APP CONTAINER -->
+    <div class="flex-1 flex flex-col min-w-0">
+      
+      <!-- TOP NAVBAR -->
+      <header class="sticky top-0 z-30 flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 py-3.5 bg-[#0b0b0e]/95 backdrop-blur-md border-b border-[#23242c] transition-colors" id="main-header">
+        <!-- Left: Hamburger + Category Tabs -->
+        <div class="flex items-center gap-4 sm:gap-8">
+          <button onclick="toggleMobileSidebar()" class="p-2 -ml-2 rounded-xl text-neutral-400 hover:text-white hover:bg-neutral-800/60 lg:hidden cursor-pointer">
+            <i data-lucide="menu" class="w-5 h-5"></i>
+          </button>
+
+          <nav class="flex items-center gap-5 sm:gap-7 text-sm font-medium">
+            <button id="cat-tv-show" onclick="filterCategory('tv-shows')" class="cat-tab text-neutral-400 hover:text-neutral-200 transition-colors cursor-pointer">TV Show</button>
+            <button id="cat-movies" onclick="filterCategory('movies')" class="cat-tab text-white font-bold border-b-2 border-red-600 pb-0.5 transition-colors cursor-pointer">Movies</button>
+            <button id="cat-animes" onclick="filterCategory('animes')" class="cat-tab text-neutral-400 hover:text-neutral-200 transition-colors cursor-pointer">Animes</button>
+          </nav>
+        </div>
+
+        <!-- Center: Live Search Bar -->
+        <div class="flex-1 max-w-md mx-2 sm:mx-4">
+          <div class="relative flex items-center w-full">
+            <i data-lucide="search" class="absolute left-3.5 w-4 h-4 text-neutral-400 pointer-events-none"></i>
+            <input
+              id="search-input"
+              type="text"
+              placeholder="Search here..."
+              oninput="handleSearch(this.value)"
+              class="w-full pl-10 pr-10 py-2 rounded-full bg-[#18191f] text-sm text-neutral-100 placeholder-neutral-500 border border-[#23242c] focus:outline-none focus:border-red-600/60 focus:ring-1 focus:ring-red-600/40 transition-all shadow-inner"
+            />
+            <button id="search-clear-btn" onclick="clearSearch()" class="hidden absolute right-3.5 p-0.5 rounded-full text-neutral-400 hover:text-white cursor-pointer">
+              <i data-lucide="x" class="w-3.5 h-3.5"></i>
+            </button>
+            <button id="search-filter-icon" class="absolute right-3.5 text-neutral-400 hover:text-white transition-colors cursor-pointer" onclick="showToast('Filter Applied', 'Showing all trending releases in 4K', 'info')">
+              <i data-lucide="sliders-horizontal" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Night Toggle + Notification + User Profile -->
+        <div class="flex items-center gap-3 sm:gap-4">
+          <!-- Night/Light Mode Button -->
+          <button id="theme-toggle" onclick="toggleTheme()" class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#18191f] hover:bg-neutral-800 border border-[#23242c] text-xs font-semibold text-neutral-300 hover:text-white transition-all cursor-pointer shadow-sm">
+            <i data-lucide="moon" class="w-3.5 h-3.5 text-red-500" id="theme-icon"></i>
+            <span id="theme-text" class="hidden sm:inline">Night</span>
+          </button>
+
+          <!-- Notification Bell -->
+          <div class="relative">
+            <button onclick="toggleNotifications()" class="relative p-2 rounded-full bg-[#18191f] hover:bg-neutral-800 text-neutral-300 hover:text-white border border-[#23242c] transition-colors cursor-pointer">
+              <i data-lucide="bell" class="w-4 h-4"></i>
+              <span id="notif-badge" class="absolute top-1 right-1 w-2 h-2 rounded-full bg-red-600 ring-2 ring-[#0b0b0e]"></span>
+            </button>
+
+            <!-- Notifications Dropdown -->
+            <div id="notif-dropdown" class="hidden absolute right-0 mt-2 w-80 sm:w-96 rounded-2xl bg-neutral-900 border border-neutral-800 shadow-2xl overflow-hidden z-50 animate-in fade-in duration-150">
+              <div class="flex items-center justify-between px-4 py-3 bg-neutral-950 border-b border-neutral-800">
+                <div class="flex items-center gap-2">
+                  <h4 class="text-sm font-bold text-white">Notifications</h4>
+                  <span class="text-[10px] px-2 py-0.5 rounded-full bg-red-600/30 text-red-400 font-bold">2 new</span>
+                </div>
+                <button onclick="markAllNotificationsRead()" class="text-xs text-neutral-400 hover:text-white transition-colors cursor-pointer">Mark all read</button>
+              </div>
+              <div class="divide-y divide-neutral-800 max-h-72 overflow-y-auto">
+                <div class="flex items-start gap-3 p-3.5 hover:bg-neutral-800/40 transition-colors cursor-pointer">
+                  <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=150&auto=format&fit=crop" class="w-10 h-10 rounded-lg object-cover flex-shrink-0" alt="Squid Game">
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between">
+                      <h5 class="text-xs font-semibold text-neutral-200 truncate">New Season Released!</h5>
+                      <span class="text-[10px] text-neutral-500">10m ago</span>
+                    </div>
+                    <p class="text-xs text-neutral-400 mt-0.5 line-clamp-2">Squid Game Season 2 is now streaming in Ultra 4K HDR.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-3.5 hover:bg-neutral-800/40 transition-colors cursor-pointer">
+                  <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop" class="w-10 h-10 rounded-full object-cover flex-shrink-0" alt="Sarah">
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between">
+                      <h5 class="text-xs font-semibold text-neutral-200 truncate">Sarah invited you</h5>
+                      <span class="text-[10px] text-neutral-500">1h ago</span>
+                    </div>
+                    <p class="text-xs text-neutral-400 mt-0.5 line-clamp-2">Join "Money Heist Finale" watch party starting in 15 mins.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- User Avatar -->
+          <div class="relative">
+            <button onclick="toggleProfileDropdown()" class="relative flex items-center rounded-full ring-2 ring-transparent hover:ring-red-600 transition-all cursor-pointer">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150&auto=format&fit=crop" alt="Avatar" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full object-cover border border-neutral-700">
+              <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-[#0b0b0e]"></span>
+            </button>
+
+            <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-56 rounded-2xl bg-neutral-900 border border-neutral-800 shadow-2xl p-2 z-50 animate-in fade-in duration-150">
+              <div class="px-3 py-2.5 border-b border-neutral-800">
+                <p class="text-xs font-bold text-white">Elena Rostova</p>
+                <p class="text-[11px] text-red-400 font-medium mt-0.5">Ultra 4K Family Member</p>
+              </div>
+              <div class="py-1 space-y-0.5 text-xs">
+                <button onclick="showToast('Account Details', 'Subscription valid until 2027 (Active)', 'info')" class="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-neutral-300 hover:text-white hover:bg-neutral-800 transition-colors text-left cursor-pointer">
+                  <i data-lucide="user" class="w-3.5 h-3.5"></i>
+                  <span>Account Details</span>
+                </button>
+                <button onclick="showToast('Parental Controls', 'All titles 16+ unlocked for this profile', 'info')" class="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-neutral-300 hover:text-white hover:bg-neutral-800 transition-colors text-left cursor-pointer">
+                  <i data-lucide="shield" class="w-3.5 h-3.5"></i>
+                  <span>Parental Controls</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- MAIN DYNAMIC CONTENT -->
+      <main class="flex-1 px-4 sm:px-6 lg:px-8 py-6" id="main-content">
+        
+        <!-- LIVE SEARCH RESULTS PANEL (AUTO SHOWN WHEN SEARCHING) -->
+        <div id="search-results-container" class="hidden mb-8 space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-bold flex items-center gap-2">
+              <i data-lucide="search" class="w-5 h-5 text-red-600"></i>
+              <span id="search-title-text">Search Results</span>
+            </h3>
+            <span id="search-count-badge" class="text-xs text-neutral-400">0 matches</span>
+          </div>
+          <div id="search-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"></div>
+        </div>
+
+        <!-- HOME VIEW CONTAINER -->
+        <div id="view-home" class="view-panel flex flex-col xl:flex-row gap-8 items-start">
+          
+          <!-- CENTER STREAM CONTENT -->
+          <div class="flex-1 w-full space-y-8 min-w-0">
+            
+            <!-- HERO BANNER (MONEY HEIST / LA CASA DE PAPEL) -->
+            <div id="hero-banner" class="relative w-full rounded-2xl md:rounded-3xl overflow-hidden bg-neutral-950 border border-[#23242c] shadow-2xl group select-none min-h-[360px] sm:min-h-[420px] md:min-h-[460px] flex items-end">
+              <!-- Backdrop -->
+              <div id="hero-bg" class="absolute inset-0 bg-cover bg-center transition-all duration-1000 transform group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=1600&auto=format&fit=crop');"></div>
+              
+              <!-- Gradient overlays -->
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0b0b0e] via-[#0b0b0e]/60 to-transparent pointer-events-none"></div>
+              <div class="absolute inset-0 bg-gradient-to-r from-[#0b0b0e] via-[#0b0b0e]/75 to-transparent pointer-events-none"></div>
+
+              <!-- Hero Cast line-up overlay -->
+              <div class="absolute inset-0 flex items-center justify-end pr-4 md:pr-12 pointer-events-none opacity-50 md:opacity-80">
+                <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1200&auto=format&fit=crop" class="h-4/5 object-contain filter drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)]" alt="Cast">
+              </div>
+
+              <!-- Controls Overlay Left / Right -->
+              <button onclick="prevHeroSlide()" class="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white hover:bg-red-600 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-200 z-20 cursor-pointer">
+                <i data-lucide="chevron-left" class="w-5 h-5"></i>
+              </button>
+              <button onclick="nextHeroSlide()" class="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white hover:bg-red-600 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-200 z-20 cursor-pointer">
+                <i data-lucide="chevron-right" class="w-5 h-5"></i>
+              </button>
+
+              <!-- Hero Information Text exactly matching reference -->
+              <div class="relative z-10 p-6 sm:p-8 md:p-10 max-w-2xl space-y-4">
+                <div class="space-y-1" id="hero-title-container">
+                  <div class="flex items-center gap-1.5 text-2xl sm:text-3xl md:text-5xl font-black tracking-tighter text-white font-sans drop-shadow-lg">
+                    <span>LA CASA</span>
+                    <span class="px-2 py-0.5 text-lg sm:text-2xl md:text-3xl font-black bg-red-600 text-white rounded">DE</span>
+                    <span>PAPEL</span>
+                  </div>
+                  <h2 class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-neutral-100 drop-shadow" id="hero-subtitle">
+                    Money Heist
+                  </h2>
+                </div>
+
+                <div class="flex items-center gap-3 text-sm">
+                  <span class="text-neutral-300 font-medium tracking-wide" id="hero-genres">Crime, Drama</span>
+                  <div class="flex items-center gap-1 px-2 py-0.5 rounded bg-[#f5c518] text-black font-extrabold text-xs shadow-sm">
+                    <span>IMDb</span>
+                    <span id="hero-rating">7.9</span>
+                  </div>
+                </div>
+
+                <!-- CTA Actions -->
+                <div class="flex items-center gap-3 pt-2">
+                  <!-- Watch Button: Dual Action triggers Video Modal & Opens DIRECT_LINK -->
+                  <button onclick="triggerWatch(HERO_SLIDES[currentHeroIndex].id)" class="flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 active:scale-95 text-white font-bold text-sm shadow-xl shadow-red-600/30 transition-all duration-200 cursor-pointer">
+                    <i data-lucide="play" class="w-4 h-4 fill-white"></i>
+                    <span>Watch</span>
+                  </button>
+
+                  <button id="hero-add-watchlist-btn" onclick="toggleHeroWatchlist()" class="flex items-center justify-center w-10 h-10 rounded-xl bg-neutral-800/80 hover:bg-neutral-700 text-neutral-200 border border-neutral-700/60 transition-all duration-200 cursor-pointer" title="Add to list">
+                    <i data-lucide="plus" class="w-4 h-4" id="hero-add-icon"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Slide Indicators -->
+              <div class="absolute bottom-6 right-8 z-10 flex items-center gap-1.5" id="hero-indicators">
+                <button class="w-6 h-1.5 bg-red-600 rounded-full cursor-pointer"></button>
+                <button class="w-1.5 h-1.5 bg-neutral-600 rounded-full cursor-pointer" onclick="setHeroSlide(1)"></button>
+                <button class="w-1.5 h-1.5 bg-neutral-600 rounded-full cursor-pointer" onclick="setHeroSlide(2)"></button>
+              </div>
+            </div>
+
+            <!-- SECTION: NEW RELEASE -->
+            <section id="section-new-release" class="space-y-4">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-bold tracking-tight text-white">New Release</h3>
+                <div class="flex items-center gap-1.5">
+                  <button onclick="showToast('Navigation', 'Scrolled previous releases', 'info')" class="p-1.5 rounded-full bg-neutral-800/80 hover:bg-neutral-700 text-neutral-300 hover:text-white transition-colors cursor-pointer">
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                  </button>
+                  <button onclick="showToast('Navigation', 'Scrolled next releases', 'info')" class="p-1.5 rounded-full bg-neutral-800/80 hover:bg-neutral-700 text-neutral-300 hover:text-white transition-colors cursor-pointer">
+                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- New Release Grid -->
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5 sm:gap-4" id="new-release-grid">
+                <!-- Extraction 2 -->
+                <div onclick="triggerWatch('nr-extraction-2')" class="group relative rounded-2xl overflow-hidden bg-neutral-900 border border-[#23242c] hover:border-red-600/60 shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer select-none">
+                  <div class="aspect-[3/4] sm:aspect-[2/3] w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1509281373149-e957c6296406?q=80&w=600&auto=format&fit=crop');"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent pointer-events-none"></div>
+                  <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div class="w-12 h-12 rounded-full bg-red-600 text-white flex items-center justify-center shadow-2xl">
+                      <i data-lucide="play" class="w-5 h-5 fill-white ml-0.5"></i>
+                    </div>
+                  </div>
+                  <div class="absolute bottom-3 inset-x-3 space-y-0.5 pointer-events-none">
+                    <h4 class="text-sm font-bold text-white truncate">Extraction 2</h4>
+                    <div class="flex items-center justify-between text-[11px] text-neutral-300">
+                      <span>Action, Thriller</span>
+                      <div class="flex items-center gap-1 font-bold text-[#f5c518]">★ 7.1</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Squid Game -->
+                <div onclick="triggerWatch('nr-squid-game')" class="group relative rounded-2xl overflow-hidden bg-neutral-900 border border-[#23242c] hover:border-red-600/60 shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer select-none">
+                  <div class="aspect-[3/4] sm:aspect-[2/3] w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=600&auto=format&fit=crop');"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent pointer-events-none"></div>
+                  <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div class="w-12 h-12 rounded-full bg-red-600 text-white flex items-center justify-center shadow-2xl">
+                      <i data-lucide="play" class="w-5 h-5 fill-white ml-0.5"></i>
+                    </div>
+                  </div>
+                  <div class="absolute bottom-3 inset-x-3 space-y-0.5 pointer-events-none">
+                    <h4 class="text-sm font-bold text-white truncate">Squid Game</h4>
+                    <div class="flex items-center justify-between text-[11px] text-neutral-300">
+                      <span>Drama, Thriller</span>
+                      <div class="flex items-center gap-1 font-bold text-[#f5c518]">★ 8.0</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- The Witcher -->
+                <div onclick="triggerWatch('nr-the-witcher')" class="group relative rounded-2xl overflow-hidden bg-neutral-900 border border-[#23242c] hover:border-red-600/60 shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer select-none">
+                  <div class="aspect-[3/4] sm:aspect-[2/3] w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1514539079130-25950c84af65?q=80&w=600&auto=format&fit=crop');"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent pointer-events-none"></div>
+                  <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div class="w-12 h-12 rounded-full bg-red-600 text-white flex items-center justify-center shadow-2xl">
+                      <i data-lucide="play" class="w-5 h-5 fill-white ml-0.5"></i>
+                    </div>
+                  </div>
+                  <div class="absolute bottom-3 inset-x-3 space-y-0.5 pointer-events-none">
+                    <h4 class="text-sm font-bold text-white truncate">The Witcher</h4>
+                    <div class="flex items-center justify-between text-[11px] text-neutral-300">
+                      <span>Fantasy, Action</span>
+                      <div class="flex items-center gap-1 font-bold text-[#f5c518]">★ 8.1</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- The Gray Man -->
+                <div onclick="triggerWatch('nr-the-gray-man')" class="group relative rounded-2xl overflow-hidden bg-neutral-900 border border-[#23242c] hover:border-red-600/60 shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer select-none">
+                  <div class="aspect-[3/4] sm:aspect-[2/3] w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=600&auto=format&fit=crop');"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent pointer-events-none"></div>
+                  <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div class="w-12 h-12 rounded-full bg-red-600 text-white flex items-center justify-center shadow-2xl">
+                      <i data-lucide="play" class="w-5 h-5 fill-white ml-0.5"></i>
+                    </div>
+                  </div>
+                  <div class="absolute bottom-3 inset-x-3 space-y-0.5 pointer-events-none">
+                    <h4 class="text-sm font-bold text-white truncate">The Gray Man</h4>
+                    <div class="flex items-center justify-between text-[11px] text-neutral-300">
+                      <span>Action, Thriller</span>
+                      <div class="flex items-center gap-1 font-bold text-[#f5c518]">★ 6.5</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- AD BANNER: BANNER_HORIZONTAL (WAJIB PERSIS DI BAWAH NEW RELEASE) -->
+            <div id="banner-horizontal-section" class="w-full my-2">
+              <div class="relative overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/80 shadow-xl p-2 flex flex-col items-center justify-center">
+                <div class="w-full flex items-center justify-between px-2 pb-1 text-[10px] uppercase font-bold text-neutral-400">
+                  <span class="flex items-center gap-1"><i data-lucide="sparkles" class="w-2.5 h-2.5 text-amber-500"></i> Sponsored Banner</span>
+                  <a href="https://www.profitableratecpmnetwork.com/qcrkkr6ufa?key=fc177ec9ee16588d868fe952e22abbf8" target="_blank" rel="noopener noreferrer" class="hover:text-red-400 transition-colors">Visit Ad &rarr;</a>
+                </div>
+                <!-- Banner Horizontal Iframe script integration -->
+                <div class="w-full flex justify-center items-center min-h-[90px] overflow-hidden">
+                  <script type="text/javascript">
+                    atOptions = {
+                      'key' : '9bf61f68ebce3a8e4d015c67c59f19c1',
+                      'format' : 'iframe',
+                      'height' : 90,
+                      'width' : 728,
+                      'params' : {}
+                    };
+                  </script>
+                  <script type="text/javascript" src="https://www.highrevenueformat.com/9bf61f68ebce3a8e4d015c67c59f19c1/invoke.js"></script>
+                </div>
+              </div>
+            </div>
+
+            <!-- SECTION: CONTINUE WATCHING -->
+            <section id="section-continue-watching" class="space-y-4">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-bold tracking-tight text-white">Continue Watching</h3>
+                <div class="flex items-center gap-1.5">
+                  <button onclick="showToast('Navigation', 'Scrolled continue watching queue', 'info')" class="p-1.5 rounded-full bg-neutral-800/80 hover:bg-neutral-700 text-neutral-300 hover:text-white transition-colors cursor-pointer">
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                  </button>
+                  <button onclick="showToast('Navigation', 'Scrolled continue watching queue', 'info')" class="p-1.5 rounded-full bg-neutral-800/80 hover:bg-neutral-700 text-neutral-300 hover:text-white transition-colors cursor-pointer">
+                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Continue Watching Cards with Progress Bars matching reference -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" id="continue-watching-grid">
+                <!-- Money Heist -->
+                <div onclick="triggerWatch('cw-money-heist')" class="group relative rounded-2xl overflow-hidden bg-neutral-900 border border-[#23242c] hover:border-red-600/50 shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer select-none">
+                  <div class="aspect-video w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=600&auto=format&fit=crop');"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent pointer-events-none"></div>
+                  
+                  <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div class="w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center shadow-xl">
+                      <i data-lucide="play" class="w-4 h-4 fill-white ml-0.5"></i>
+                    </div>
+                  </div>
+
+                  <!-- Red Progress bar -->
+                  <div class="absolute bottom-10 inset-x-0 h-1 bg-neutral-800">
+                    <div class="h-full bg-red-600 rounded-r-full w-[75%]"></div>
+                  </div>
+
+                  <div class="absolute bottom-0 inset-x-0 p-3 bg-neutral-950/80 flex items-center justify-between">
+                    <h4 class="text-xs font-bold text-white truncate">Money Heist</h4>
+                    <span class="text-[10px] text-neutral-400 font-mono">S5:E7</span>
+                  </div>
+                </div>
+
+                <!-- The Walking Dead -->
+                <div onclick="triggerWatch('cw-walking-dead')" class="group relative rounded-2xl overflow-hidden bg-neutral-900 border border-[#23242c] hover:border-red-600/50 shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer select-none">
+                  <div class="aspect-video w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=600&auto=format&fit=crop');"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent pointer-events-none"></div>
+                  
+                  <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div class="w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center shadow-xl">
+                      <i data-lucide="play" class="w-4 h-4 fill-white ml-0.5"></i>
+                    </div>
+                  </div>
+
+                  <!-- Red Progress bar -->
+                  <div class="absolute bottom-10 inset-x-0 h-1 bg-neutral-800">
+                    <div class="h-full bg-red-600 rounded-r-full w-[42%]"></div>
+                  </div>
+
+                  <div class="absolute bottom-0 inset-x-0 p-3 bg-neutral-950/80 flex items-center justify-between">
+                    <h4 class="text-xs font-bold text-white truncate">The Walking Dead</h4>
+                    <span class="text-[10px] text-neutral-400 font-mono">S11:E14</span>
+                  </div>
+                </div>
+
+                <!-- Venom -->
+                <div onclick="triggerWatch('cw-venom')" class="group relative rounded-2xl overflow-hidden bg-neutral-900 border border-[#23242c] hover:border-red-600/50 shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer select-none">
+                  <div class="aspect-video w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=600&auto=format&fit=crop');"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent pointer-events-none"></div>
+                  
+                  <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div class="w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center shadow-xl">
+                      <i data-lucide="play" class="w-4 h-4 fill-white ml-0.5"></i>
+                    </div>
+                  </div>
+
+                  <!-- Red Progress bar -->
+                  <div class="absolute bottom-10 inset-x-0 h-1 bg-neutral-800">
+                    <div class="h-full bg-red-600 rounded-r-full w-[88%]"></div>
+                  </div>
+
+                  <div class="absolute bottom-0 inset-x-0 p-3 bg-neutral-950/80 flex items-center justify-between">
+                    <h4 class="text-xs font-bold text-white truncate">Venom</h4>
+                    <span class="text-[10px] text-neutral-400 font-mono">1h 38m left</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- RIGHT SIDEBAR (POPULAR MOVIES + BANNER_KOTAK + FAVORITES) -->
+          <aside id="right-sidebar" class="w-full xl:w-80 flex-shrink-0 space-y-6 py-2">
+            
+            <!-- POPULAR MOVIES -->
+            <div class="space-y-4">
+              <div class="flex items-center gap-2.5">
+                <div class="w-1 h-5 bg-red-600 rounded-full"></div>
+                <h3 class="text-base font-bold tracking-tight text-white">Popular Movies</h3>
+              </div>
+
+              <div class="space-y-1" id="popular-movies-list">
+                <!-- Johan Wick -->
+                <div onclick="triggerWatch('pop-johan-wick')" class="group flex items-center gap-3.5 p-2 rounded-xl hover:bg-neutral-800/50 transition-all duration-200 cursor-pointer">
+                  <div class="relative w-12 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-neutral-800 shadow-md">
+                    <img src="https://images.unsplash.com/photo-1533928298208-27ff66555d8d?q=80&w=400&auto=format&fit=crop" alt="Johan Wick" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                      <i data-lucide="play" class="w-4 h-4 fill-white text-white"></i>
+                    </div>
+                  </div>
+                  <div class="flex-1 min-w-0 space-y-1">
+                    <h4 class="text-sm font-semibold text-neutral-100 group-hover:text-red-400 transition-colors truncate">Johan Wick</h4>
+                    <p class="text-xs text-neutral-400 truncate">Action, Horror</p>
+                    <div class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-[#f5c518] text-black font-extrabold text-[10px]">
+                      <span>IMDb</span>
+                      <span>7.4</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Heart of Stone -->
+                <div onclick="triggerWatch('pop-heart-of-stone')" class="group flex items-center gap-3.5 p-2 rounded-xl hover:bg-neutral-800/50 transition-all duration-200 cursor-pointer">
+                  <div class="relative w-12 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-neutral-800 shadow-md">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop" alt="Heart of Stone" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                      <i data-lucide="play" class="w-4 h-4 fill-white text-white"></i>
+                    </div>
+                  </div>
+                  <div class="flex-1 min-w-0 space-y-1">
+                    <h4 class="text-sm font-semibold text-neutral-100 group-hover:text-red-400 transition-colors truncate">Heart of Stone</h4>
+                    <p class="text-xs text-neutral-400 truncate">Adventure, Fantasy</p>
+                    <div class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-[#f5c518] text-black font-extrabold text-[10px]">
+                      <span>IMDb</span>
+                      <span>6.4</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Game of Thrones -->
+                <div onclick="triggerWatch('pop-game-of-thrones')" class="group flex items-center gap-3.5 p-2 rounded-xl hover:bg-neutral-800/50 transition-all duration-200 cursor-pointer">
+                  <div class="relative w-12 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-neutral-800 shadow-md">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=400&auto=format&fit=crop" alt="Game of Thrones" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                      <i data-lucide="play" class="w-4 h-4 fill-white text-white"></i>
+                    </div>
+                  </div>
+                  <div class="flex-1 min-w-0 space-y-1">
+                    <h4 class="text-sm font-semibold text-neutral-100 group-hover:text-red-400 transition-colors truncate">Game of Thrones</h4>
+                    <p class="text-xs text-neutral-400 truncate">Action, Drama</p>
+                    <div class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-[#f5c518] text-black font-extrabold text-[10px]">
+                      <span>IMDb</span>
+                      <span>8.5</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- View More Button -->
+              <button onclick="toggleMorePopular()" class="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white bg-neutral-900/80 hover:bg-neutral-800 border border-neutral-800 transition-all cursor-pointer group">
+                <span id="btn-text-popular">View More</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+              </button>
+            </div>
+
+            <!-- AD BANNER: BANNER_KOTAK (WAJIB PERSIS DI ANTARA POPULAR DAN FAVORITES) -->
+            <div id="banner-kotak-section" class="w-full my-2">
+              <div class="relative overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/80 shadow-xl p-2 flex flex-col items-center justify-center">
+                <div class="w-full flex items-center justify-between px-1 pb-1 text-[10px] uppercase font-bold text-neutral-400">
+                  <span class="flex items-center gap-1"><i data-lucide="sparkles" class="w-2.5 h-2.5 text-amber-500"></i> Sponsored</span>
+                  <a href="https://www.profitableratecpmnetwork.com/qcrkkr6ufa?key=fc177ec9ee16588d868fe952e22abbf8" target="_blank" rel="noopener noreferrer" class="hover:text-red-400 transition-colors">Visit &rarr;</a>
+                </div>
+                <!-- Banner Kotak Iframe script integration -->
+                <div class="w-full flex justify-center items-center min-h-[50px] overflow-hidden">
+                  <script type="text/javascript">
+                    atOptions = {
+                      'key' : '453e0b2e0d1c62e5be6eaed0235e474d',
+                      'format' : 'iframe',
+                      'height' : 50,
+                      'width' : 320,
+                      'params' : {}
+                    };
+                  </script>
+                  <script type="text/javascript" src="https://www.highrevenueformat.com/453e0b2e0d1c62e5be6eaed0235e474d/invoke.js"></script>
+                </div>
+              </div>
+            </div>
+
+            <!-- FAVORITES -->
+            <div class="space-y-4">
+              <div class="flex items-center gap-2.5">
+                <div class="w-1 h-5 bg-red-600 rounded-full"></div>
+                <h3 class="text-base font-bold tracking-tight text-white">Favorites</h3>
+              </div>
+
+              <div class="space-y-1" id="favorites-movies-list">
+                <!-- Striking Vipers -->
+                <div onclick="triggerWatch('fav-striking-vipers')" class="group flex items-center gap-3.5 p-2 rounded-xl hover:bg-neutral-800/50 transition-all duration-200 cursor-pointer">
+                  <div class="relative w-12 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-neutral-800 shadow-md">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400&auto=format&fit=crop" alt="Striking Vipers" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                      <i data-lucide="play" class="w-4 h-4 fill-white text-white"></i>
+                    </div>
+                  </div>
+                  <div class="flex-1 min-w-0 space-y-1">
+                    <h4 class="text-sm font-semibold text-neutral-100 group-hover:text-red-400 transition-colors truncate">Striking Vipers</h4>
+                    <p class="text-xs text-neutral-400 truncate">Action, Drama</p>
+                    <div class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-[#f5c518] text-black font-extrabold text-[10px]">
+                      <span>IMDb</span>
+                      <span>4.5</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- All Of Us Are Dead -->
+                <div onclick="triggerWatch('fav-all-of-us-are-dead')" class="group flex items-center gap-3.5 p-2 rounded-xl hover:bg-neutral-800/50 transition-all duration-200 cursor-pointer">
+                  <div class="relative w-12 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-neutral-800 shadow-md">
+                    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=400&auto=format&fit=crop" alt="All Of Us Are Dead" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                      <i data-lucide="play" class="w-4 h-4 fill-white text-white"></i>
+                    </div>
+                  </div>
+                  <div class="flex-1 min-w-0 space-y-1">
+                    <h4 class="text-sm font-semibold text-neutral-100 group-hover:text-red-400 transition-colors truncate">All Of Us Are Dead</h4>
+                    <p class="text-xs text-neutral-400 truncate">Crime, Horror</p>
+                    <div class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-[#f5c518] text-black font-extrabold text-[10px]">
+                      <span>IMDb</span>
+                      <span>9.0</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Our Planet -->
+                <div onclick="triggerWatch('fav-our-planet')" class="group flex items-center gap-3.5 p-2 rounded-xl hover:bg-neutral-800/50 transition-all duration-200 cursor-pointer">
+                  <div class="relative w-12 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-neutral-800 shadow-md">
+                    <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=400&auto=format&fit=crop" alt="Our Planet" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                      <i data-lucide="play" class="w-4 h-4 fill-white text-white"></i>
+                    </div>
+                  </div>
+                  <div class="flex-1 min-w-0 space-y-1">
+                    <h4 class="text-sm font-semibold text-neutral-100 group-hover:text-red-400 transition-colors truncate">Our Planet</h4>
+                    <p class="text-xs text-neutral-400 truncate">Drama, Adventure</p>
+                    <div class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-[#f5c518] text-black font-extrabold text-[10px]">
+                      <span>IMDb</span>
+                      <span>6.7</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- View More Button -->
+              <button onclick="toggleMoreFavorites()" class="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white bg-neutral-900/80 hover:bg-neutral-800 border border-neutral-800 transition-all cursor-pointer group">
+                <span id="btn-text-favorites">View More</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+              </button>
+            </div>
+          </aside>
+        </div>
+
+        <!-- OTHER DYNAMIC VIEWS -->
+        <!-- WATCHLIST VIEW -->
+        <div id="view-watchlist" class="view-panel hidden space-y-6 animate-in fade-in duration-200">
+          <div class="space-y-1">
+            <h2 class="text-2xl font-bold tracking-tight text-white flex items-center gap-2.5">
+              <i data-lucide="heart" class="w-6 h-6 text-red-500 fill-red-500/20"></i>
+              My Watch List
+            </h2>
+            <p class="text-sm text-neutral-400">All your saved titles ready for instant 4K streaming.</p>
+          </div>
+          <div id="watchlist-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6"></div>
+        </div>
+
+        <!-- COMING SOON VIEW -->
+        <div id="view-coming_soon" class="view-panel hidden space-y-6 animate-in fade-in duration-200">
+          <div class="space-y-1">
+            <h2 class="text-2xl font-bold tracking-tight text-white flex items-center gap-2.5">
+              <i data-lucide="calendar" class="w-6 h-6 text-red-500"></i>
+              Coming Soon & Future Premieres
+            </h2>
+            <p class="text-sm text-neutral-400">Set instant alerts for upcoming blockbusters and season finales.</p>
+          </div>
+          <div class="space-y-4">
+            <div class="flex flex-col sm:flex-row gap-5 p-5 rounded-2xl bg-neutral-900 border border-[#23242c] shadow-xl">
+              <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=600&auto=format&fit=crop" class="w-full sm:w-48 h-48 sm:h-36 rounded-xl object-cover" alt="Stranger Things 5">
+              <div class="flex-1 flex flex-col justify-between space-y-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs px-2.5 py-0.5 rounded-full bg-red-600/20 text-red-400 font-bold">November 2026</span>
+                    <span class="text-xs text-neutral-400">Sci-Fi • Horror • Drama</span>
+                  </div>
+                  <h3 class="text-lg font-bold text-white mt-1">Stranger Things Season 5</h3>
+                  <p class="text-xs sm:text-sm text-neutral-400">The Hawkins party faces the ultimate showdown with the Upside Down in this massive series conclusion.</p>
+                </div>
+                <div class="flex items-center gap-3 pt-1">
+                  <button onclick="showToast('Alert Set', 'You will be notified when Stranger Things S5 drops!', 'success')" class="px-4 py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-white text-xs font-semibold cursor-pointer">Remind Me</button>
+                  <button onclick="window.open('https://www.profitableratecpmnetwork.com/qcrkkr6ufa?key=fc177ec9ee16588d868fe952e22abbf8', '_blank')" class="px-4 py-2 rounded-xl bg-red-600/20 text-red-400 border border-red-500/30 text-xs font-semibold cursor-pointer">Watch Teaser</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-5 p-5 rounded-2xl bg-neutral-900 border border-[#23242c] shadow-xl">
+              <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=600&auto=format&fit=crop" class="w-full sm:w-48 h-48 sm:h-36 rounded-xl object-cover" alt="Arcane 2">
+              <div class="flex-1 flex flex-col justify-between space-y-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs px-2.5 py-0.5 rounded-full bg-red-600/20 text-red-400 font-bold">October 2026</span>
+                    <span class="text-xs text-neutral-400">Anime • Action • Fantasy</span>
+                  </div>
+                  <h3 class="text-lg font-bold text-white mt-1">Arcane Season 2</h3>
+                  <p class="text-xs sm:text-sm text-neutral-400">The war between Piltover and Zaun escalates to devastating heights after Jinx's attack.</p>
+                </div>
+                <div class="flex items-center gap-3 pt-1">
+                  <button onclick="showToast('Alert Set', 'Reminder set for Arcane Season 2!', 'success')" class="px-4 py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-white text-xs font-semibold cursor-pointer">Remind Me</button>
+                  <button onclick="window.open('https://www.profitableratecpmnetwork.com/qcrkkr6ufa?key=fc177ec9ee16588d868fe952e22abbf8', '_blank')" class="px-4 py-2 rounded-xl bg-red-600/20 text-red-400 border border-red-500/30 text-xs font-semibold cursor-pointer">Watch Teaser</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DISCOVERY VIEW -->
+        <div id="view-discovery" class="view-panel hidden space-y-6 animate-in fade-in duration-200">
+          <div class="space-y-1">
+            <h2 class="text-2xl font-bold tracking-tight text-white flex items-center gap-2.5">
+              <i data-lucide="compass" class="w-6 h-6 text-red-500"></i>
+              Discovery Hub
+            </h2>
+            <p class="text-sm text-neutral-400">Curated categories tailored to your cinematic taste.</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div onclick="showToast('Category Loaded', 'Showing 48 Sci-Fi & Cyberpunk blockbusters', 'info')" class="p-6 rounded-2xl bg-gradient-to-br from-purple-950 to-neutral-900 border border-neutral-800 hover:border-red-500/50 cursor-pointer shadow-xl transition-all">
+              <h3 class="text-lg font-bold text-white">Cyberpunk & Sci-Fi</h3>
+              <p class="text-xs text-neutral-400 mt-1">48 Titles in Ultra HD 4K</p>
+            </div>
+            <div onclick="showToast('Category Loaded', 'Showing 34 High-Stakes Heist series', 'info')" class="p-6 rounded-2xl bg-gradient-to-br from-red-950 to-neutral-900 border border-neutral-800 hover:border-red-500/50 cursor-pointer shadow-xl transition-all">
+              <h3 class="text-lg font-bold text-white">High-Stakes Crime Heists</h3>
+              <p class="text-xs text-neutral-400 mt-1">34 Titles in Ultra HD 4K</p>
+            </div>
+            <div onclick="showToast('Category Loaded', 'Showing 64 Anime Shonen hits', 'info')" class="p-6 rounded-2xl bg-gradient-to-br from-amber-950 to-neutral-900 border border-neutral-800 hover:border-red-500/50 cursor-pointer shadow-xl transition-all">
+              <h3 class="text-lg font-bold text-white">Anime Shonen Masterpieces</h3>
+              <p class="text-xs text-neutral-400 mt-1">64 Titles in Ultra HD 4K</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FRIENDS VIEW -->
+        <div id="view-friends" class="view-panel hidden space-y-6 animate-in fade-in duration-200">
+          <div class="space-y-1">
+            <h2 class="text-2xl font-bold tracking-tight text-white flex items-center gap-2.5">
+              <i data-lucide="users" class="w-6 h-6 text-red-500"></i>
+              Friends & Live Social Activity
+            </h2>
+            <p class="text-sm text-neutral-400">See what your circle is watching right now.</p>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between p-4 rounded-2xl bg-neutral-900 border border-neutral-800">
+              <div class="flex items-center gap-3.5">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop" class="w-11 h-11 rounded-full object-cover" alt="Marcus">
+                <div>
+                  <h4 class="text-sm font-bold text-white">Marcus Vance</h4>
+                  <p class="text-xs text-neutral-400">Watching: <span class="text-neutral-200 font-medium">Squid Game (S2:E3)</span></p>
+                </div>
+              </div>
+              <button onclick="showToast('Party Joined', 'Joined Marcus watch stream!', 'success')" class="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold cursor-pointer">Join Stream</button>
+            </div>
+            <div class="flex items-center justify-between p-4 rounded-2xl bg-neutral-900 border border-neutral-800">
+              <div class="flex items-center gap-3.5">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop" class="w-11 h-11 rounded-full object-cover" alt="Sophia">
+                <div>
+                  <h4 class="text-sm font-bold text-white">Sophia Chen</h4>
+                  <p class="text-xs text-neutral-400">Watching: <span class="text-neutral-200 font-medium">Money Heist (S5:E10)</span></p>
+                </div>
+              </div>
+              <button onclick="showToast('Party Joined', 'Joined Sophia watch stream!', 'success')" class="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold cursor-pointer">Join Stream</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PARTIES VIEW -->
+        <div id="view-parties" class="view-panel hidden space-y-6 animate-in fade-in duration-200">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div class="space-y-1">
+              <h2 class="text-2xl font-bold tracking-tight text-white flex items-center gap-2.5">
+                <i data-lucide="sparkles" class="w-6 h-6 text-red-500"></i>
+                Watch Parties & Sync Rooms
+              </h2>
+              <p class="text-sm text-neutral-400">Stream synchronised 4K videos with live voice and chat.</p>
+            </div>
+            <button onclick="showToast('Party Room Created', 'Party Code #STREAM-9821 is ready! Link copied.', 'success')" class="px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-lg cursor-pointer">Create New Party</button>
+          </div>
+          <div class="p-6 rounded-2xl bg-neutral-900 border border-neutral-800 space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-neutral-800">
+              <div>
+                <span class="px-2 py-0.5 rounded bg-red-600/20 text-red-400 text-xs font-bold">LIVE NOW</span>
+                <h3 class="text-base font-bold text-white mt-1">Money Heist Finale Live Session</h3>
+                <p class="text-xs text-neutral-400">Host: Elena Rostova • 14 Streamers</p>
+              </div>
+              <button onclick="showToast('Room Connected', 'Connecting to 4K live stream...', 'info')" class="px-4 py-2 rounded-xl bg-red-600 text-white text-xs font-bold cursor-pointer">Enter Room</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- MEDIA VIEW -->
+        <div id="view-media" class="view-panel hidden space-y-6 animate-in fade-in duration-200">
+          <div class="space-y-1">
+            <h2 class="text-2xl font-bold tracking-tight text-white flex items-center gap-2.5">
+              <i data-lucide="film" class="w-6 h-6 text-red-500"></i>
+              Media & Offline Downloads
+            </h2>
+            <p class="text-sm text-neutral-400">Manage high-bitrate cached titles.</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-5 rounded-2xl bg-neutral-900 border border-neutral-800 space-y-2">
+              <div class="flex justify-between text-sm font-bold text-white"><span>Storage Used</span><span>28.4 GB / 128 GB</span></div>
+              <div class="w-full h-2 bg-neutral-800 rounded-full"><div class="h-full bg-red-600 rounded-full w-[22%]"></div></div>
+              <p class="text-xs text-neutral-500">3 movies downloaded in 4K HDR Dolby Vision.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SETTING VIEW -->
+        <div id="view-setting" class="view-panel hidden space-y-6 animate-in fade-in duration-200">
+          <div class="space-y-1">
+            <h2 class="text-2xl font-bold tracking-tight text-white flex items-center gap-2.5">
+              <i data-lucide="settings" class="w-6 h-6 text-red-500"></i>
+              Account & Playback Settings
+            </h2>
+            <p class="text-sm text-neutral-400">Customize video streaming parameters and audio channels.</p>
+          </div>
+          <div class="p-6 rounded-2xl bg-neutral-900 border border-neutral-800 space-y-4">
+            <div class="flex items-center justify-between py-2 border-b border-neutral-800">
+              <div>
+                <p class="text-sm font-medium text-neutral-200">Video Quality</p>
+                <p class="text-xs text-neutral-500">Auto-adjust bitrate to match connection</p>
+              </div>
+              <select class="bg-neutral-800 text-white text-xs px-3 py-1.5 rounded-lg border border-neutral-700">
+                <option>4K Ultra HD (Dolby Vision)</option>
+                <option>1080p Full HD</option>
+                <option>720p HD</option>
+              </select>
+            </div>
+            <div class="flex items-center justify-between py-2 border-b border-neutral-800">
+              <div>
+                <p class="text-sm font-medium text-neutral-200">Spatial Dolby Atmos Audio</p>
+                <p class="text-xs text-neutral-500">Enable 5.1 / 7.1 surround sound decode</p>
+              </div>
+              <input type="checkbox" checked class="accent-red-600 w-4 h-4 cursor-pointer">
+            </div>
+            <div class="flex justify-end pt-2">
+              <button onclick="showToast('Settings Saved', 'Streaming preferences successfully updated!', 'success')" class="px-5 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold cursor-pointer">Save Changes</button>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- VIDEO PLAYER MODAL -->
+  <div id="video-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/85 backdrop-blur-xl animate-in fade-in duration-200" onclick="closeVideoModal()">
+    <div class="relative w-full max-w-5xl max-h-[92vh] flex flex-col rounded-2xl bg-neutral-900 border border-neutral-800 shadow-2xl overflow-hidden text-neutral-100" onclick="event.stopPropagation()">
+      <!-- Modal Top Bar -->
+      <div class="flex items-center justify-between px-5 py-3.5 bg-neutral-950 border-b border-neutral-800">
+        <div class="flex items-center gap-3">
+          <span id="modal-category-tag" class="px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider rounded bg-red-600 text-white">TV Series</span>
+          <h3 id="modal-movie-title" class="text-base sm:text-lg font-bold tracking-tight text-white truncate max-w-md">Money Heist</h3>
+          <span id="modal-rating-badge" class="hidden sm:inline-flex items-center gap-1 text-xs px-2 py-0.5 rounded bg-amber-400/10 text-amber-400 font-semibold border border-amber-400/20">★ IMDb 7.9</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="https://www.profitableratecpmnetwork.com/qcrkkr6ufa?key=fc177ec9ee16588d868fe952e22abbf8" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-red-600/20 hover:bg-red-600/30 text-red-400 border border-red-500/30 transition-all">
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            <span>HD Server</span>
+          </a>
+          <button onclick="closeVideoModal()" class="p-1.5 rounded-lg bg-neutral-800/70 hover:bg-neutral-700 text-neutral-300 hover:text-white transition-colors cursor-pointer" aria-label="Close modal">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Player Canvas Area -->
+      <div class="relative w-full aspect-video bg-black flex items-center justify-center overflow-hidden group select-none">
+        <div id="modal-video-bg" class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=1600&auto=format&fit=crop');"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/40 pointer-events-none"></div>
+
+        <!-- Center Play/Pause button -->
+        <div id="modal-play-overlay" class="absolute inset-0 flex flex-col items-center justify-center gap-3 z-10 hidden">
+          <button onclick="togglePlayState()" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-red-600/90 text-white flex items-center justify-center shadow-2xl hover:scale-105 transition-transform cursor-pointer">
+            <i data-lucide="play" class="w-8 h-8 ml-1 fill-white"></i>
+          </button>
+          <span class="text-sm font-medium text-neutral-300">Click to Resume</span>
+        </div>
+
+        <!-- Top Watermark -->
+        <div class="absolute top-4 left-4 z-10 flex items-center gap-2 opacity-80 pointer-events-none">
+          <span class="text-red-600 font-black text-xl tracking-tighter">NETFLIX</span>
+          <span class="text-[10px] uppercase font-bold tracking-widest text-neutral-400 bg-neutral-900/80 px-2 py-0.5 rounded border border-neutral-700/50">ORIGINAL</span>
+        </div>
+
+        <!-- Bottom Controls Bar -->
+        <div class="absolute bottom-0 inset-x-0 p-3 sm:p-5 bg-gradient-to-t from-black/95 via-black/70 to-transparent z-20 flex flex-col gap-2">
+          <!-- Timeline scrubber -->
+          <div class="flex items-center gap-3 w-full">
+            <span id="player-time-current" class="text-xs font-mono text-neutral-300 min-w-[36px]">00:45</span>
+            <input id="player-scrubber" type="range" min="0" max="180" value="45" oninput="seekVideo(this.value)" class="w-full h-1.5 bg-neutral-700 rounded-lg appearance-none cursor-pointer accent-red-600">
+            <span id="player-time-total" class="text-xs font-mono text-neutral-400 min-w-[36px]">03:00</span>
+          </div>
+
+          <!-- Action bar -->
+          <div class="flex items-center justify-between pt-1">
+            <div class="flex items-center gap-2 sm:gap-4">
+              <button onclick="togglePlayState()" class="p-1.5 sm:p-2 rounded-lg hover:bg-white/10 text-white transition-colors cursor-pointer" id="btn-play-pause">
+                <i data-lucide="pause" class="w-5 h-5" id="icon-play-pause"></i>
+              </button>
+              <button onclick="rewindVideo()" class="p-1.5 rounded-lg hover:bg-white/10 text-neutral-300 hover:text-white transition-colors cursor-pointer hidden sm:block">
+                <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+              </button>
+              <button onclick="forwardVideo()" class="p-1.5 rounded-lg hover:bg-white/10 text-neutral-300 hover:text-white transition-colors cursor-pointer hidden sm:block">
+                <i data-lucide="rotate-cw" class="w-4 h-4"></i>
+              </button>
+              <button onclick="toggleMute()" class="p-1.5 rounded-lg hover:bg-white/10 text-neutral-300 hover:text-white transition-colors cursor-pointer">
+                <i data-lucide="volume-2" class="w-5 h-5" id="icon-volume"></i>
+              </button>
+            </div>
+
+            <div class="flex items-center gap-2 sm:gap-3">
+              <select class="bg-neutral-800 text-neutral-300 text-xs font-semibold px-2 py-1 rounded border border-neutral-700 cursor-pointer">
+                <option>4K Ultra HD</option>
+                <option>1080p Full HD</option>
+                <option>720p HD</option>
+              </select>
+              <button onclick="showToast('Fullscreen', 'Toggled player window view', 'info')" class="p-1.5 rounded-lg hover:bg-white/10 text-neutral-300 hover:text-white cursor-pointer">
+                <i data-lucide="maximize" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Bottom Information -->
+      <div class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 bg-neutral-900">
+        <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-neutral-800">
+          <div class="space-y-1">
+            <div class="flex flex-wrap items-center gap-2 text-xs text-neutral-400">
+              <span class="font-semibold text-emerald-400">98% Match</span>
+              <span>•</span>
+              <span id="modal-year">2023</span>
+              <span>•</span>
+              <span class="px-1.5 py-0.5 rounded border border-neutral-700 text-neutral-300 font-mono">16+</span>
+              <span>•</span>
+              <span id="modal-duration">2h 15m</span>
+              <span>•</span>
+              <span class="px-1.5 py-0.5 rounded bg-red-950/60 text-red-400 font-bold border border-red-900/40">Ultra HD</span>
+            </div>
+            <div class="flex items-center gap-2 pt-1" id="modal-genres-tags"></div>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button id="modal-watchlist-btn" onclick="toggleModalWatchlist()" class="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold border border-neutral-700 bg-neutral-800 hover:bg-neutral-750 text-neutral-200 cursor-pointer">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+              <span>Add to List</span>
+            </button>
+            <a href="https://www.profitableratecpmnetwork.com/qcrkkr6ufa?key=fc177ec9ee16588d868fe952e22abbf8" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 text-white text-xs font-bold shadow-lg shadow-red-600/30 cursor-pointer">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+              <span>Stream VIP 4K Server</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="md:col-span-2 space-y-2">
+            <h4 class="text-sm font-bold uppercase tracking-wider text-neutral-400">Storyline</h4>
+            <p id="modal-synopsis" class="text-sm leading-relaxed text-neutral-300">
+              An adrenaline-fueled mission packed with suspense, tactical warfare, and emotional breakthroughs. As secrets unravel, loyalty is tested across every battlefront.
+            </p>
+          </div>
+          <div class="space-y-2 text-xs bg-neutral-950/60 p-4 rounded-xl border border-neutral-800">
+            <div><span class="text-neutral-500">Audio: </span><span class="text-neutral-300 font-medium">English [Original] 5.1 Dolby</span></div>
+            <div><span class="text-neutral-500">Subtitles: </span><span class="text-neutral-300 font-medium">English [CC], Indonesian, Spanish</span></div>
+            <div><span class="text-neutral-500">Format: </span><span class="text-neutral-300 font-medium">Dolby Vision / 4K UHD</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING TOAST NOTIFICATION CONTAINER -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2.5 max-w-sm w-full pointer-events-none"></div>
+
+  <!-- ALL DATA & JAVASCRIPT LOGIC -->
+  <script>
+    // MONETISASI KONFIGURASI
+    const DIRECT_LINK = "https://www.profitableratecpmnetwork.com/qcrkkr6ufa?key=fc177ec9ee16588d868fe952e22abbf8";
+
+    // DATABASE FILM
+    const MOVIES_DATABASE = {
+      'hero-money-heist': {
+        id: 'hero-money-heist',
+        title: 'Money Heist',
+        subtitle: 'La Casa De Papel',
+        category: 'tv-shows',
+        genres: ['Crime', 'Drama'],
+        imdbRating: 7.9,
+        year: 2021,
+        duration: '5 Seasons',
+        synopsis: 'An unusual group of robbers attempt to carry out the most perfect robbery in Spanish history - stealing 2.4 billion euros from the Royal Mint of Spain under the guidance of The Professor.',
+        posterUrl: 'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=600&auto=format&fit=crop',
+        backdropUrl: 'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=1600&auto=format&fit=crop'
+      },
+      'hero-stranger-things': {
+        id: 'hero-stranger-things',
+        title: 'Stranger Things',
+        category: 'tv-shows',
+        genres: ['Sci-Fi', 'Horror', 'Drama'],
+        imdbRating: 8.7,
+        year: 2022,
+        duration: '4 Seasons',
+        synopsis: 'When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces and one strange little girl.',
+        posterUrl: 'https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=600&auto=format&fit=crop',
+        backdropUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1600&auto=format&fit=crop'
+      },
+      'hero-cyberpunk': {
+        id: 'hero-cyberpunk',
+        title: 'Cyberpunk: Edgerunners',
+        category: 'animes',
+        genres: ['Anime', 'Action', 'Sci-Fi'],
+        imdbRating: 8.3,
+        year: 2022,
+        duration: '10 Episodes',
+        synopsis: 'A street kid trying to survive in a technology and body modification-obsessed city of the future. Having everything to lose, he chooses to stay alive by becoming an edgerunner.',
+        posterUrl: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=600&auto=format&fit=crop',
+        backdropUrl: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1600&auto=format&fit=crop'
+      },
+      'nr-extraction-2': {
+        id: 'nr-extraction-2',
+        title: 'Extraction 2',
+        category: 'movies',
+        genres: ['Action', 'Thriller'],
+        imdbRating: 7.1,
+        year: 2023,
+        duration: '2h 3m',
+        synopsis: 'Back from the brink of death, highly skilled commando Tyler Rake takes on another dangerous mission: saving the imprisoned family of a ruthless gangster.',
+        posterUrl: 'https://images.unsplash.com/photo-1509281373149-e957c6296406?q=80&w=600&auto=format&fit=crop'
+      },
+      'nr-squid-game': {
+        id: 'nr-squid-game',
+        title: 'Squid Game',
+        category: 'tv-shows',
+        genres: ['Drama', 'Mystery', 'Thriller'],
+        imdbRating: 8.0,
+        year: 2023,
+        duration: 'Season 2',
+        synopsis: 'Hundreds of cash-strapped players accept a strange invitation to compete in children\'s games. Inside, a tempting prize awaits with deadly high stakes.',
+        posterUrl: 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=600&auto=format&fit=crop'
+      },
+      'nr-the-witcher': {
+        id: 'nr-the-witcher',
+        title: 'The Witcher',
+        category: 'tv-shows',
+        genres: ['Action', 'Adventure', 'Fantasy'],
+        imdbRating: 8.1,
+        year: 2023,
+        duration: '3 Seasons',
+        synopsis: 'Geralt of Rivia, a solitary monster hunter, struggles to find his place in a world where people often prove more wicked than beasts.',
+        posterUrl: 'https://images.unsplash.com/photo-1514539079130-25950c84af65?q=80&w=600&auto=format&fit=crop'
+      },
+      'nr-the-gray-man': {
+        id: 'nr-the-gray-man',
+        title: 'The Gray Man',
+        category: 'movies',
+        genres: ['Action', 'Thriller'],
+        imdbRating: 6.5,
+        year: 2022,
+        duration: '2h 2m',
+        synopsis: 'When the CIA\'s most skilled operative accidentally uncovers dark agency secrets, a psychopathic former colleague puts a bounty on his head.',
+        posterUrl: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=600&auto=format&fit=crop'
+      },
+      'cw-money-heist': {
+        id: 'cw-money-heist',
+        title: 'Money Heist',
+        category: 'tv-shows',
+        genres: ['Crime', 'Drama'],
+        imdbRating: 7.9,
+        duration: 'S5:E7',
+        posterUrl: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=600&auto=format&fit=crop'
+      },
+      'cw-walking-dead': {
+        id: 'cw-walking-dead',
+        title: 'The Walking Dead',
+        category: 'tv-shows',
+        genres: ['Drama', 'Horror'],
+        imdbRating: 8.1,
+        duration: 'S11:E14',
+        posterUrl: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=600&auto=format&fit=crop'
+      },
+      'cw-venom': {
+        id: 'cw-venom',
+        title: 'Venom',
+        category: 'movies',
+        genres: ['Action', 'Sci-Fi'],
+        imdbRating: 6.7,
+        duration: '1h 38m left',
+        posterUrl: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=600&auto=format&fit=crop'
+      },
+      'pop-johan-wick': {
+        id: 'pop-johan-wick',
+        title: 'Johan Wick',
+        category: 'movies',
+        genres: ['Action', 'Horror'],
+        imdbRating: 7.4,
+        posterUrl: 'https://images.unsplash.com/photo-1533928298208-27ff66555d8d?q=80&w=400&auto=format&fit=crop'
+      },
+      'pop-heart-of-stone': {
+        id: 'pop-heart-of-stone',
+        title: 'Heart of Stone',
+        category: 'movies',
+        genres: ['Adventure', 'Fantasy'],
+        imdbRating: 6.4,
+        posterUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop'
+      },
+      'pop-game-of-thrones': {
+        id: 'pop-game-of-thrones',
+        title: 'Game of Thrones',
+        category: 'tv-shows',
+        genres: ['Action', 'Drama'],
+        imdbRating: 8.5,
+        posterUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=400&auto=format&fit=crop'
+      },
+      'fav-striking-vipers': {
+        id: 'fav-striking-vipers',
+        title: 'Striking Vipers',
+        category: 'tv-shows',
+        genres: ['Action', 'Drama'],
+        imdbRating: 4.5,
+        posterUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400&auto=format&fit=crop'
+      },
+      'fav-all-of-us-are-dead': {
+        id: 'fav-all-of-us-are-dead',
+        title: 'All Of Us Are Dead',
+        category: 'tv-shows',
+        genres: ['Crime', 'Horror'],
+        imdbRating: 9.0,
+        posterUrl: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=400&auto=format&fit=crop'
+      },
+      'fav-our-planet': {
+        id: 'fav-our-planet',
+        title: 'Our Planet',
+        category: 'tv-shows',
+        genres: ['Drama', 'Adventure'],
+        imdbRating: 6.7,
+        posterUrl: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=400&auto=format&fit=crop'
+      }
+    };
+
+    const HERO_SLIDES = [
+      MOVIES_DATABASE['hero-money-heist'],
+      MOVIES_DATABASE['hero-stranger-things'],
+      MOVIES_DATABASE['hero-cyberpunk']
+    ];
+
+    let currentHeroIndex = 0;
+    let watchlist = ['hero-money-heist', 'nr-squid-game'];
+    let isDarkMode = true;
+    let isPlaying = true;
+    let currentVideoMovie = null;
+    let playTimer = null;
+    let currentSecs = 45;
+
+    // 1. STATE MANAGEMENT / MENU SIDEBAR
+    function switchView(viewName) {
+      document.querySelectorAll('.view-panel').forEach(panel => panel.classList.add('hidden'));
+      const activePanel = document.getElementById('view-' + viewName);
+      if (activePanel) activePanel.classList.remove('hidden');
+
+      document.querySelectorAll('.nav-item').forEach(item => {
+        item.classList.remove('bg-red-600/15', 'text-red-500', 'font-semibold');
+        item.classList.add('text-neutral-400', 'font-medium');
+      });
+      const activeNav = document.getElementById('nav-' + viewName);
+      if (activeNav) {
+        activeNav.classList.add('bg-red-600/15', 'text-red-500', 'font-semibold');
+        activeNav.classList.remove('text-neutral-400', 'font-medium');
+      }
+
+      if (viewName === 'watchlist') renderWatchlistView();
+      toggleMobileSidebar(false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 2. DUAL ACTION WATCH (Trigger Video Modal + Open DIRECT_LINK)
+    function triggerWatch(movieId) {
+      // Buka langsung dari event klik sebelum menjalankan kode modal.
+      window.open(DIRECT_LINK, '_blank', 'noopener,noreferrer');
+      const movie = MOVIES_DATABASE[movieId] || MOVIES_DATABASE['hero-money-heist'];
+      if (movie) openVideoModal(movie);
+    }
+
+    // 3. VIDEO MODAL PLAYER
+    function openVideoModal(movie) {
+      currentVideoMovie = movie;
+      document.getElementById('modal-movie-title').textContent = movie.title;
+      document.getElementById('modal-category-tag').textContent = movie.category === 'tv-shows' ? 'TV Series' : movie.category === 'animes' ? 'Anime' : 'Movie';
+      document.getElementById('modal-rating-badge').textContent = `★ IMDb ${movie.imdbRating}`;
+      document.getElementById('modal-year').textContent = movie.year || '2023';
+      document.getElementById('modal-duration').textContent = movie.duration || '2h 15m';
+      document.getElementById('modal-synopsis').textContent = movie.synopsis || "An intense, high-octane streaming cinematic experience in Ultra 4K HDR.";
+      
+      const bgUrl = movie.backdropUrl || movie.posterUrl;
+      document.getElementById('modal-video-bg').style.backgroundImage = `url('${bgUrl}')`;
+
+      const tagsContainer = document.getElementById('modal-genres-tags');
+      tagsContainer.innerHTML = '';
+      (movie.genres || ['Drama', 'Action']).forEach(g => {
+        const span = document.createElement('span');
+        span.className = 'text-xs px-2.5 py-0.5 rounded-full bg-neutral-800 text-neutral-300 border border-neutral-700';
+        span.textContent = g;
+        tagsContainer.appendChild(span);
+      });
+
+      updateModalWatchlistButton();
+
+      document.getElementById('video-modal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      
+      isPlaying = true;
+      currentSecs = 45;
+      startPlayTimer();
+      lucide.createIcons();
+    }
+
+    function closeVideoModal() {
+      document.getElementById('video-modal').classList.add('hidden');
+      document.body.style.overflow = '';
+      clearInterval(playTimer);
+    }
+
+    function startPlayTimer() {
+      clearInterval(playTimer);
+      playTimer = setInterval(() => {
+        if (isPlaying) {
+          currentSecs++;
+          if (currentSecs > 180) currentSecs = 0;
+          document.getElementById('player-scrubber').value = currentSecs;
+          document.getElementById('player-time-current').textContent = formatTime(currentSecs);
+        }
+      }, 1000);
+    }
+
+    function formatTime(s) {
+      const m = Math.floor(s / 60);
+      const sec = s % 60;
+      return `0${m}:${sec < 10 ? '0' : ''}${sec}`;
+    }
+
+    function togglePlayState() {
+      isPlaying = !isPlaying;
+      const overlay = document.getElementById('modal-play-overlay');
+      const icon = document.getElementById('icon-play-pause');
+      if (isPlaying) {
+        overlay.classList.add('hidden');
+        icon.setAttribute('data-lucide', 'pause');
+      } else {
+        overlay.classList.remove('hidden');
+        icon.setAttribute('data-lucide', 'play');
+      }
+      lucide.createIcons();
+    }
+
+    function seekVideo(val) {
+      currentSecs = parseInt(val);
+      document.getElementById('player-time-current').textContent = formatTime(currentSecs);
+    }
+
+    function rewindVideo() {
+      currentSecs = Math.max(0, currentSecs - 10);
+      document.getElementById('player-scrubber').value = currentSecs;
+      document.getElementById('player-time-current').textContent = formatTime(currentSecs);
+    }
+
+    function forwardVideo() {
+      currentSecs = Math.min(180, currentSecs + 10);
+      document.getElementById('player-scrubber').value = currentSecs;
+      document.getElementById('player-time-current').textContent = formatTime(currentSecs);
+    }
+
+    function toggleMute() {
+      showToast('Audio Profile', 'Spatial audio level toggled', 'info');
+    }
+
+    // 4. HERO CAROUSEL CONTROLS
+    function updateHeroDisplay() {
+      const movie = HERO_SLIDES[currentHeroIndex];
+      const bg = document.getElementById('hero-bg');
+      bg.style.backgroundImage = `url('${movie.backdropUrl || movie.posterUrl}')`;
+      
+      const titleContainer = document.getElementById('hero-title-container');
+      if (currentHeroIndex === 0) {
+        titleContainer.innerHTML = `
+          <div class="flex items-center gap-1.5 text-2xl sm:text-3xl md:text-5xl font-black tracking-tighter text-white font-sans drop-shadow-lg">
+            <span>LA CASA</span>
+            <span class="px-2 py-0.5 text-lg sm:text-2xl md:text-3xl font-black bg-red-600 text-white rounded">DE</span>
+            <span>PAPEL</span>
+          </div>
+          <h2 class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-neutral-100 drop-shadow" id="hero-subtitle">Money Heist</h2>
+        `;
+      } else {
+        titleContainer.innerHTML = `
+          <h2 class="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight text-white drop-shadow-lg">${movie.title}</h2>
+        `;
+      }
+
+      document.getElementById('hero-genres').textContent = movie.genres.join(', ');
+      document.getElementById('hero-rating').textContent = movie.imdbRating;
+      
+      // Indicators
+      const indicators = document.getElementById('hero-indicators').children;
+      for (let i = 0; i < indicators.length; i++) {
+        if (i === currentHeroIndex) {
+          indicators[i].className = 'w-6 h-1.5 bg-red-600 rounded-full cursor-pointer';
+        } else {
+          indicators[i].className = 'w-1.5 h-1.5 bg-neutral-600 rounded-full cursor-pointer';
+        }
+      }
+    }
+
+    function nextHeroSlide() {
+      currentHeroIndex = (currentHeroIndex + 1) % HERO_SLIDES.length;
+      updateHeroDisplay();
+    }
+
+    function prevHeroSlide() {
+      currentHeroIndex = (currentHeroIndex === 0) ? HERO_SLIDES.length - 1 : currentHeroIndex - 1;
+      updateHeroDisplay();
+    }
+
+    function setHeroSlide(idx) {
+      currentHeroIndex = idx;
+      updateHeroDisplay();
+    }
+
+    // Auto rotate hero
+    setInterval(() => {
+      nextHeroSlide();
+    }, 8000);
+
+    // 5. LIVE SEARCH FILTER
+    function handleSearch(query) {
+      const q = query.trim().toLowerCase();
+      const resultsContainer = document.getElementById('search-results-container');
+      const searchGrid = document.getElementById('search-grid');
+      const clearBtn = document.getElementById('search-clear-btn');
+      const homeView = document.getElementById('view-home');
+
+      if (!q) {
+        resultsContainer.classList.add('hidden');
+        clearBtn.classList.add('hidden');
+        return;
+      }
+
+      clearBtn.classList.remove('hidden');
+      resultsContainer.classList.remove('hidden');
+
+      const matches = Object.values(MOVIES_DATABASE).filter(m => 
+        m.title.toLowerCase().includes(q) || 
+        (m.genres && m.genres.some(g => g.toLowerCase().includes(q)))
+      );
+
+      document.getElementById('search-title-text').textContent = `Search Results for "${query}"`;
+      document.getElementById('search-count-badge').textContent = `${matches.length} matches`;
+
+      searchGrid.innerHTML = '';
+      if (matches.length === 0) {
+        searchGrid.innerHTML = `
+          <div class="col-span-full p-8 text-center rounded-2xl bg-neutral-900 border border-neutral-800">
+            <p class="text-neutral-400 text-sm">No streaming titles found matching "${query}".</p>
+          </div>
+        `;
+      } else {
+        matches.forEach(m => {
+          const card = document.createElement('div');
+          card.className = 'group relative rounded-2xl overflow-hidden bg-neutral-900 border border-[#23242c] hover:border-red-600/50 cursor-pointer shadow-lg transition-all hover:-translate-y-1';
+          card.onclick = () => triggerWatch(m.id);
+          card.innerHTML = `
+            <div class="aspect-[2/3] w-full bg-cover bg-center" style="background-image: url('${m.posterUrl}')"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/20"></div>
+            <div class="absolute bottom-2.5 inset-x-2.5">
+              <h4 class="text-xs font-bold text-white truncate">${m.title}</h4>
+              <div class="flex items-center justify-between text-[10px] text-neutral-300 mt-0.5">
+                <span>${m.genres ? m.genres[0] : 'Movie'}</span>
+                <span class="text-[#f5c518] font-bold">★ ${m.imdbRating}</span>
+              </div>
+            </div>
+          `;
+          searchGrid.appendChild(card);
+        });
+      }
+    }
+
+    function clearSearch() {
+      const input = document.getElementById('search-input');
+      input.value = '';
+      handleSearch('');
+    }
+
+    // 6. NIGHT / LIGHT MODE TOGGLE (#0b0b0e <-> #f8fafc)
+    function toggleTheme() {
+      isDarkMode = !isDarkMode;
+      const body = document.getElementById('app-body');
+      const icon = document.getElementById('theme-icon');
+      const text = document.getElementById('theme-text');
+      const header = document.getElementById('main-header');
+
+      if (isDarkMode) {
+        body.className = 'bg-[#0b0b0e] text-neutral-100 selection:bg-red-600 selection:text-white transition-colors duration-300 min-h-screen overflow-x-hidden dark';
+        header.className = 'sticky top-0 z-30 flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 py-3.5 bg-[#0b0b0e]/95 backdrop-blur-md border-b border-[#23242c] transition-colors';
+        icon.setAttribute('data-lucide', 'moon');
+        text.textContent = 'Night';
+        showToast('Night Mode Activated', 'Switched to elegant dark theme (#0b0b0e)', 'info');
+      } else {
+        body.className = 'bg-[#f8fafc] text-neutral-900 selection:bg-red-600 selection:text-white transition-colors duration-300 min-h-screen overflow-x-hidden';
+        header.className = 'sticky top-0 z-30 flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 py-3.5 bg-[#f8fafc]/95 backdrop-blur-md border-b border-neutral-200 transition-colors';
+        icon.setAttribute('data-lucide', 'sun');
+        text.textContent = 'Light';
+        showToast('Light Mode Activated', 'Switched to clean light theme (#f8fafc)', 'info');
+      }
+      lucide.createIcons();
+    }
+
+    // 7. CATEGORY FILTER (TV Show, Movies, Animes)
+    function filterCategory(cat) {
+      document.querySelectorAll('.cat-tab').forEach(tab => {
+        tab.className = 'cat-tab text-neutral-400 hover:text-neutral-200 transition-colors cursor-pointer';
+      });
+      const activeTab = document.getElementById(`cat-${cat}`);
+      if (activeTab) {
+        activeTab.className = 'cat-tab text-white font-bold border-b-2 border-red-600 pb-0.5 transition-colors cursor-pointer';
+      }
+      showToast('Category Filter', `Showing all ${cat === 'tv-shows' ? 'TV Shows' : cat === 'movies' ? 'Blockbuster Movies' : 'Anime Releases'}`, 'info');
+    }
+
+    // 8. WATCHLIST SYSTEM
+    function toggleHeroWatchlist() {
+      const currentMovie = HERO_SLIDES[currentHeroIndex];
+      const idx = watchlist.indexOf(currentMovie.id);
+      if (idx > -1) {
+        watchlist.splice(idx, 1);
+        showToast('Watch List', `Removed "${currentMovie.title}" from Watch List`, 'info');
+      } else {
+        watchlist.push(currentMovie.id);
+        showToast('Watch List', `Added "${currentMovie.title}" to Watch List!`, 'success');
+      }
+      document.getElementById('watchlist-badge').textContent = watchlist.length;
+    }
+
+    function toggleModalWatchlist() {
+      if (!currentVideoMovie) return;
+      const idx = watchlist.indexOf(currentVideoMovie.id);
+      if (idx > -1) {
+        watchlist.splice(idx, 1);
+        showToast('Watch List', `Removed "${currentVideoMovie.title}"`, 'info');
+      } else {
+        watchlist.push(currentVideoMovie.id);
+        showToast('Watch List', `Added "${currentVideoMovie.title}" to Watch List!`, 'success');
+      }
+      document.getElementById('watchlist-badge').textContent = watchlist.length;
+      updateModalWatchlistButton();
+    }
+
+    function updateModalWatchlistButton() {
+      const btn = document.getElementById('modal-watchlist-btn');
+      if (!currentVideoMovie) return;
+      const exists = watchlist.includes(currentVideoMovie.id);
+      if (exists) {
+        btn.className = 'flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold border border-emerald-500/40 bg-emerald-600/20 text-emerald-400 cursor-pointer';
+        btn.innerHTML = '<i data-lucide="check" class="w-3.5 h-3.5"></i><span>In Watchlist</span>';
+      } else {
+        btn.className = 'flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold border border-neutral-700 bg-neutral-800 text-neutral-200 cursor-pointer';
+        btn.innerHTML = '<i data-lucide="plus" class="w-3.5 h-3.5"></i><span>Add to List</span>';
+      }
+      lucide.createIcons();
+    }
+
+    function renderWatchlistView() {
+      const grid = document.getElementById('watchlist-grid');
+      grid.innerHTML = '';
+      if (watchlist.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full p-12 text-center rounded-2xl bg-neutral-900 border border-neutral-800 space-y-2">
+            <h3 class="text-base font-bold text-white">Your Watch List is empty</h3>
+            <p class="text-xs text-neutral-400">Click "+" on any movie poster to save it here.</p>
+          </div>
+        `;
+        return;
+      }
+
+      watchlist.forEach(id => {
+        const movie = MOVIES_DATABASE[id] || MOVIES_DATABASE['hero-money-heist'];
+        const card = document.createElement('div');
+        card.className = 'group relative rounded-2xl overflow-hidden bg-neutral-900 border border-[#23242c] shadow-xl hover:border-red-600/50 transition-all cursor-pointer';
+        card.innerHTML = `
+          <div class="aspect-[2/3] w-full bg-cover bg-center" style="background-image: url('${movie.posterUrl}')" onclick="triggerWatch('${movie.id}')">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/20"></div>
+            <button onclick="event.stopPropagation(); removeFromWatchlist('${movie.id}')" class="absolute top-2.5 right-2.5 p-1.5 rounded-full bg-black/60 hover:bg-red-600 text-white transition-colors cursor-pointer">
+              <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+            </button>
+            <div class="absolute bottom-3 inset-x-3">
+              <h4 class="text-xs font-bold text-white truncate">${movie.title}</h4>
+              <p class="text-[10px] text-neutral-400">★ ${movie.imdbRating}</p>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+      lucide.createIcons();
+    }
+
+    function removeFromWatchlist(id) {
+      watchlist = watchlist.filter(item => item !== id);
+      document.getElementById('watchlist-badge').textContent = watchlist.length;
+      renderWatchlistView();
+      showToast('Removed', 'Movie removed from Watch List', 'info');
+    }
+
+    // 9. TOAST NOTIFICATIONS
+    function showToast(title, msg, type = 'success') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      const isInfo = type === 'info';
+      toast.className = `pointer-events-auto flex items-start gap-3 p-3.5 rounded-xl bg-neutral-900 text-white border ${isInfo ? 'border-sky-500/40' : 'border-red-500/40'} shadow-2xl backdrop-blur-md animate-in slide-in-from-bottom-5 duration-200`;
+      toast.innerHTML = `
+        <i data-lucide="${isInfo ? 'info' : 'check-circle'}" class="w-5 h-5 flex-shrink-0 mt-0.5 ${isInfo ? 'text-sky-400' : 'text-red-500'}"></i>
+        <div class="flex-1 min-w-0">
+          <h4 class="text-xs font-bold">${title}</h4>
+          <p class="text-xs text-neutral-400 mt-0.5">${msg}</p>
+        </div>
+      `;
+      container.appendChild(toast);
+      lucide.createIcons();
+      setTimeout(() => {
+        toast.remove();
+      }, 3500);
+    }
+
+    // 10. TOGGLES & UI CONTROLS
+    function toggleMobileSidebar(forceState) {
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('mobile-backdrop');
+      const isClosed = sidebar.classList.contains('-translate-x-full');
+      const shouldOpen = forceState !== undefined ? forceState : isClosed;
+
+      if (shouldOpen) {
+        sidebar.classList.remove('-translate-x-full');
+        backdrop.classList.remove('hidden');
+      } else {
+        sidebar.classList.add('-translate-x-full');
+        backdrop.classList.add('hidden');
+      }
+    }
+
+    function toggleNotifications() {
+      const drop = document.getElementById('notif-dropdown');
+      drop.classList.toggle('hidden');
+    }
+
+    function markAllNotificationsRead() {
+      document.getElementById('notif-badge').classList.add('hidden');
+      showToast('Notifications', 'All notifications marked as read', 'info');
+    }
+
+    function toggleProfileDropdown() {
+      const drop = document.getElementById('profile-dropdown');
+      drop.classList.toggle('hidden');
+    }
+
+    function toggleMorePopular() {
+      showToast('Popular Expanded', 'Loaded all 10 top trending movie charts', 'info');
+    }
+
+    function toggleMoreFavorites() {
+      showToast('Favorites Expanded', 'Loaded all user favorites', 'info');
+    }
+
+    // INITIALIZATION
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+  </script>
 </body>
 </html>
